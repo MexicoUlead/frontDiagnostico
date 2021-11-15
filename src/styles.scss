@@ -120,3 +120,26 @@ $radius: 10px;
     align-items: center;
     margin-bottom: 10px;
 }
+
+
+.btn_confirm{
+    position: relative;
+    margin-top: 50px;
+
+    button{
+        position: relative;
+        width: 100%;
+        background: #009cde;
+        color: #ffffff;
+        border: none;
+        border-radius: 30px;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        transition: all .3s ease;
+
+        &:hover{
+            background: #066598;
+        }
+    }
+}

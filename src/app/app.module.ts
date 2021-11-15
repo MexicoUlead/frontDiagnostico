@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { EstadisticasComponent } from './pages/estadisticas/estadisticas.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EstadisticasComponent } from './pages/estadisticas/estadisticas.compone
     AppRoutingModule,
     ComponentsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
 

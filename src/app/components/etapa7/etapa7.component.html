@@ -1,1 +1,80 @@
-<p>etapa7 works!</p>
+<div class="etapa__title">
+    <h3>Etapa 7: {{Preguntas.etapa7.titulo}}</h3>
+</div>
+
+<div class="etapa__info">
+    <p [innerHTML]="Preguntas.etapa7.contenido"></p>
+</div>
+
+<div class="form__container">
+    <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa7.a}}</label>
+    <input type="number" id="" class="form__input" autocomplete="off">
+</div>
+
+<div class="form__container">
+    <p class="form__label">{{Preguntas.etapa7.b}}</p>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+            Si
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+            No
+        </label>
+    </div>
+</div>
+
+<div class="form__container">
+    <p class="form__label">{{Preguntas.etapa7.c}}</p>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+            Si
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+            No
+        </label>
+    </div>
+
+    <textarea class="form__input form_textarea" placeholder="¿Cuál?"></textarea>
+</div>
+
+<div class="form__container">
+    <p class="form__label">{{Preguntas.etapa7.d}}</p>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+            Si
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+            No
+        </label>
+    </div>
+
+    <textarea class="form__input form_textarea" placeholder="Por qué?"></textarea>
+</div>
+
+<div class="form__container">
+    <p class="form__label">{{Preguntas.etapa7.e}}</p>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+            Si
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+            No
+        </label>
+    </div>
+</div>

@@ -1,1 +1,121 @@
-<p>etapa2 works!</p>
+<!-- etapa2 -->
+<div class="etapa__title">
+    <h3>Etapa 2: {{Preguntas.etapa2.titulo}}</h3>
+</div>
+
+<div class="etapa__info">
+    <p [innerHTML]="Preguntas.etapa2.contenidos"></p>
+</div>
+
+<!-- #input vision de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.a}}</label>
+    <textarea id="vision" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input mision de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.b}}</label>
+    <textarea id="mision" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input creencias de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.c}}</label>
+    <textarea id="creencias" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input valores de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.d}}</label>
+    <textarea id="valores" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input principios de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.e}}</label>
+    <textarea id="principios" class="form__input form_textarea"></textarea>
+</div>
+
+<div class="etapa__info">
+    <h5>{{Preguntas.etapa2.f}}</h5>
+    <p>{{Preguntas.etapa2.tipoLiderazgo}}</p>
+
+    <ol>
+        <li>
+            <div>
+                <b>{{Preguntas.etapa2.lid1.nombre}}</b>
+                <p>{{Preguntas.etapa2.lid1.concepto}}</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <b>{{Preguntas.etapa2.lid2.nombre}}</b>
+                <p>{{Preguntas.etapa2.lid2.concepto}}</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <b>{{Preguntas.etapa2.lid3.nombre}}</b>
+                <p>{{Preguntas.etapa2.lid3.concepto}}</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <b>{{Preguntas.etapa2.lid4.nombre}}</b>
+                <p>{{Preguntas.etapa2.lid4.concepto}}</p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <b>{{Preguntas.etapa2.lid5.nombre}}</b>
+                <p>{{Preguntas.etapa2.lid5.concepto}}</p>
+            </div>
+        </li>
+    </ol>
+</div>
+
+<!-- #input tipo liderazgo de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.f_choice}}</label>
+    <textarea id="tipo_lider" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input equipo de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.g}}</label>
+    <textarea id="equipo" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input logros de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.h}}</label>
+    <textarea id="logros" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #input proyectos de empresa -->
+<div class="form__container">
+    <label class="form__label">{{Preguntas.etapa2.i}}</label>
+    <textarea id="proyectos" class="form__input form_textarea"></textarea>
+</div>
+
+<!-- fortalezas y debilidades -->
+<div class="form__container fortaleza__debilidad">
+
+    <p class="fort_deb_text">{{Preguntas.etapa3.textof}}</p>
+
+    <div class="row">
+        <div class="col-6">
+            <div>
+                <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
+                <textarea id="fortalezaEtapa2" class="form__input form_textarea"></textarea>
+            </div>
+        </div>
+        <div class="col-6">
+            <div>
+                <p class="text">{{Preguntas.etapa3.debilidades}}</p>
+                <textarea id="debilidadEtapa2" class="form__input form_textarea"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

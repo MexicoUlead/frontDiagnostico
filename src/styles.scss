@@ -1,6 +1,122 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  background-color: #1c1c1c;
-  color: white;
+// html, body {
+//   background-color: #1c1c1c;
+//   color: white;
+// }
+
+* p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+    padding: 0;
 }
 
+$clr-primary: #18ffff;
+$clr-primary-light: #adffff;
+$clr-primary-dark: #091034;
+$black: #000000;
+$white: #ffffff;
+
+$radius: 10px;
+
+.logoUlead {
+    text-align: center;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.etapa__title {
+    margin-bottom: 30px;
+
+    h3 {
+        color: #006093;
+    }
+}
+
+.etapa__info {
+    h5 {
+        color: #006093;
+        margin-bottom: 20px;
+    }
+    p {
+        padding-bottom: 30px;
+    }
+}
+
+.panel {
+    border: 2px solid #000000;
+    border-radius: 30px;
+    padding: 30px;
+    margin-bottom: 120px;
+}
+
+.form__container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        border-color: $clr-primary-light;
+    }
+
+    &:focus {
+        border-color: $clr-primary;
+    }
+
+    .form__input,
+    .form__select {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 2px solid #009cde;
+        border-radius: 5px;
+        font-family: inherit;
+        font-size: inherit;
+        color: #000000;
+        outline: none;
+        padding: 0.5rem;
+        background: none;
+    }
+
+    .form_textarea {
+        resize: none;
+        height: 100px;
+    }
+}
+
+.form__label {
+    background: $white;
+    color: $black;
+    cursor: text;
+    font-weight: bold;
+    left: 1rem;
+    padding: 0 0.5rem;
+    top: -12px;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    z-index: 1;
+}
+
+.fortaleza__debilidad {
+    .fort_deb_text {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .text {
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.subInput {
+    margin-left: 1.3rem;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    margin-bottom: 10px;
+}

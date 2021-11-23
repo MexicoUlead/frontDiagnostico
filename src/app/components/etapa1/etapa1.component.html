@@ -1,5 +1,169 @@
-<div *ngFor="let d of dig">
-  <p>
-{{d.etapa1.a}}
-  </p>
+<!-- etapa1 -->
+<div class="etapa__title">
+  <h3>Etapa1: {{Preguntas.etapa1.titulo}}</h3>
+</div>
+
+
+
+<!-- #input nombre de empresa -->
+<div class="form__container">
+  <label class="form__label">{{Preguntas.etapa1.a}}</label>
+  <input type="text" id="nombreEmpresa" class="form__input">
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+    <!-- #fecha fundacion de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa1.b}}</label>
+      <input type="date" id="fundacion" class="form__input">
+    </div>
+  </div>
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+    <!-- #organizacion de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa1.c.pregunta}}</label>
+      <select id="tipo_organi" class="form__select" aria-label="Default select example">
+
+        <option value="1" selected>Familiar (todos los socios son parientes) </option>
+        <option value="2">No familia (ninguno de los socios es pariente)</option>
+        <option value="3">Mixta (cuenta con socios familiares y no familiares)</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- #socios princiapales de empresa -->
+<p class="mb-4 form__label">{{Preguntas.etapa1.d}}</p>
+
+<div class="row">
+  <div class="col-5">
+    <div class="form__container">
+      <label class="form__label">Nombre</label>
+      <input type="text" id="socio1" class="form__input" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="col-5">
+    <div class="form__container">
+      <label class="form__label">Puesto</label>
+      <input type="text" id="puesto1" class="form__input" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="familiar" id="familiar1">
+      <label class="form-check-label" for="familiar1">
+        F
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-5">
+    <div class="form__container">
+      <label class="form__label">Nombre</label>
+      <input type="text" id="socio2" class="form__input" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="col-5">
+    <div class="form__container">
+      <label class="form__label">Puesto</label>
+      <input type="text" id="puesto2" class="form__input" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="familiar" id="familiar2">
+      <label class="form-check-label" for="familiar2">
+        F
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-5">
+    <div class="form__container">
+      <label class="form__label">Nombre</label>
+      <input type="text" id="socio3" class="form__input">
+    </div>
+  </div>
+
+  <div class="col-5">
+    <div class="form__container">
+      <label class="form__label">Puesto</label>
+      <input type="text" id="puesto3" class="form__input">
+    </div>
+  </div>
+
+  <div class="col-2">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="familiar" id="familiar3">
+      <label class="form-check-label" for="familiar3">
+        F
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- #tipo de sociedad legal que rige en empresa -->
+<div class="form__container">
+  <label class="form__label">{{Preguntas.etapa1.e}}</label>
+  <input type="text" id="tipoSociedad" class="form__input" autocomplete="off">
+</div>
+
+<!-- #politicas y procedimientos de empresa -->
+<p class="mb-4 form__label">{{Preguntas.etapa1.f}}</p>
+
+<div class="form__container">
+  <div class="form-check">
+    <input class="form-check-input" type="radio" value="si" name="radioBtn1" id="radio1" (change)="radioChange($event)">
+    <label class="form-check-label" for="radio1">
+      Si
+    </label>
+  </div>
+  <div class="form-check">
+    <input checked class="form-check-input" type="radio" value="no" name="radioBtn1" id="radio2"
+      (change)="radioChange($event)">
+    <label class="form-check-label" for="radio2">
+      No
+    </label>
+  </div>
+</div>
+
+<!-- #la respuesta fue SI-->
+<div class="form__container" *ngIf="politicaSi">
+  <label class="form__label">{{Preguntas.etapa1.g}}</label>
+  <textarea class="form__input form_textarea"></textarea>
+</div>
+
+<!-- #cuenta con seguro de empresa -->
+<p class="mb-4 form__label">{{Preguntas.etapa1.h}}</p>
+
+<div class="form__container">
+  <div class="form-check">
+    <input class="form-check-input" type="radio" value="si" name="radioBtn2" id="radio1"
+      (change)="radioChange2($event)">
+    <label class="form-check-label" for="radio1">
+      Si
+    </label>
+  </div>
+  <div class="form-check">
+    <input checked class="form-check-input" type="radio" value="no" name="radioBtn2" id="radio2"
+      (change)="radioChange2($event)">
+    <label class="form-check-label" for="radio2">
+      No
+    </label>
+  </div>
+</div>
+
+<!-- #la respuesta fue SI-->
+<div class="form__container" *ngIf="seguroSi">
+  <label class="form__label">De qué tipo:</label>
+  <textarea id="tipo" class="form__input form_textarea"></textarea>
 </div>

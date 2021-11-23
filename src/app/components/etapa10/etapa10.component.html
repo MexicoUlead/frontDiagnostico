@@ -1,1 +1,24 @@
-<p>etapa10 works!</p>
+<div class="etapa__title">
+    <h3>Etapa 10: {{Preguntas.etapa10.titulo}}</h3>
+</div>
+
+<div class="etapa__info">
+    <p [innerHTML]="Preguntas.etapa10.contenido1"></p>
+
+    <ul>
+        <li>
+            {{Preguntas.etapa10.contenido2}}
+        </li>
+        <li>
+            {{Preguntas.etapa10.contenido3}}
+        </li>
+        <li>
+            {{Preguntas.etapa10.contenido4}}
+        </li>
+        <li>
+            {{Preguntas.etapa10.contenido5}}
+        </li>
+    </ul>
+
+    <span>{{Preguntas.etapa10.agradecimiento}}</span>
+</div>

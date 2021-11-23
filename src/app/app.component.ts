@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dianosticoMex';
+
+
+  siguiente() {
+    console.log("siguiente")
+  }
 }
+

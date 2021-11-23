@@ -1,59 +1,1434 @@
-<p>inicio works!</p>
-<!-- etapa1 -->
-<div class="panel">
-<p>text</p>
+<form [formGroup]="registerForm" (submit)="createUser()">
+  <div class="inicio" *ngIf="mostrarInicio">
+    <div class="etapa__title">
+      <h3>Diagnóstico Competitividad Empresaria</h3>
+    </div>
+    <div class="etapa__info">
+      <p>
+        El siguiente diagnóstico ha sido elaborado para conocer la situación actual de su empresa en materia
+        de competitividad, y en particular, los retos específicos que están impidiendo el crecimiento-posicionamiento
+        local e internacional. <br>
+        EL diagnóstico empresarial enfocado al desarrollo de la competitividad del sector belleza y
+        cuidado personal aquí adjunto, permitirá encontrar la raíz del problema, lo que facilitará la puesta
+        en marcha de herramientas con base en la metodología ABP® cuyo conocimiento, uso e
+        implementación permitirán que la corporación se desarrollé de manera óptima, para así tener
+        mayores posibilidades de acceder a mercados globales.<br>
+        El cuestionario está estructurado para proyectar información estratégica sobre el funcionamiento
+        de cada área estructural de su organización; por lo que se le solicita responder de la forma más
+        detallada y clara posible para poder entonces desarrollar un programa de capacitación a su medida.
+      </p>
 
-<h3>Etapa1: Datos Generales</h3>
+      <b>Acuerdo de Confidencialidad</b>
+      <br>
+      <span>
+        La persona firmante que presenta este diagnóstico declara que la información contenida es estrictamente de
+        carácter
+        Confidencial y de Uso Restringido, y solo podrá ser usada para efectos de la creación y organización de un plan
+        de
+        capacitación personalizado, en el entendido de que el destinatario que tenga el presente manuscrito en sus poder
+        se
+        compromete y responsabiliza a hacer del mismo un buen uso, y a no revelar su contenido sin la autorización
+        expresa, y
+        por escrito de su Director(a) General
+      </span>
 
-<p>Nombre de su empresa</p>
+      <div class="form__container">
+        <label class="form__label">Firma (nombre)</label>
+        <input type="text" id="firma" formControlName="firma" class="form__input">
+      </div>
 
-<input type="text">
+      <div class="form__container">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="autoriza" id="autoriza" formControlName="autoriza">
+          <label class="form-check-label" for="autoriza">
+            Autorización
+          </label>
+          <br>
+        </div>
+      </div>
+    </div>
 
-<p>Fecha de fundacion de la empresa</p>
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="siguienteEtapa()">Siguiente</button>
+    </div>
+  </div>
 
-<input type="date">
+  <!----------------- etapa1 ----------------->
+  <div class="etapa1" *ngIf="mostrarEtapa">
+    <div class="etapa__title">
+      <h3>Etapa1: {{Preguntas.etapa1.titulo}}</h3>
+    </div>
 
-<p>Su organización es</p>
+    <!-- #input nombre de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa1.a}}</label>
+      <input type="text" id="nombreEmpresa" formControlName="nombreEmpresa" class="form__input">
+    </div>
 
-<select class="form-select" aria-label="Default select example">
-  <option selected>Seleccionar</option>
-  <option value="1">Familiar (todos los socios son parientes) </option>
-  <option value="2">No familia (ninguno de los socios es pariente)</option>
-  <option value="3">Mixta (cuenta con socios familiares y no familiares)</option>
-</select>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+        <!-- #fecha fundacion de empresa -->
+        <div class="form__container">
+          <label class="form__label">{{Preguntas.etapa1.b}}</label>
+          <input type="date" id="antiguedad" formControlName="antiguedad" class="form__input">
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+        <!-- #organizacion de empresa -->
+        <div class="form__container">
+          <label class="form__label">{{Preguntas.etapa1.c.pregunta}}</label>
+          <select id="typeOrganizacion" formControlName="typeOrganizacion" class="form__select"
+            aria-label="Default select example">
 
-<p>Nombre de los tres socios principales y si cuentan con un puesto dentro de la empresa
-indique cuál es y marque “F” si es familiar</p>
-<!-- puesto -->
-<div>
-  <input type="text"> <label> Puesto </label> <input type="text">
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="familiar" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    F
-  </label>
-</div>
-</div>
-<div>
-  <input type="text"> <label> Puesto </label> <input type="text">
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="familiar" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    F
-  </label>
-</div>
-</div>
-<div>
-  <input type="text"> <label> Puesto </label> <input type="text">
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="familiar" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    F
-  </label>
-</div>
-</div>
+            <option value="1" selected>Familiar (todos los socios son parientes) </option>
+            <option value="2">No familia (ninguno de los socios es pariente)</option>
+            <option value="3">Mixta (cuenta con socios familiares y no familiares)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- #socios princiapales de empresa -->
+    <p class="mb-4 form__label">{{Preguntas.etapa1.d}}</p>
+
+    <div class="row">
+      <div class="col-5">
+        <div class="form__container">
+          <label class="form__label">Nombre</label>
+          <input type="text" id="dSocio1" formControlName="dSocio1" class="form__input">
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="form__container">
+          <label class="form__label">Puesto</label>
+          <input type="text" id="puesto1" class="form__input">
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="familiar" id="familiar1">
+          <label class="form-check-label" for="familiar1">
+            F
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <div class="form__container">
+          <label class="form__label">Nombre</label>
+          <input type="text" id="dSocio2" formControlName="dSocio2" class="form__input" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="form__container">
+          <label class="form__label">Puesto</label>
+          <input type="text" id="puesto2" class="form__input" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="familiar" id="familiar2">
+          <label class="form-check-label" for="familiar2">
+            F
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-5">
+        <div class="form__container">
+          <label class="form__label">Nombre</label>
+          <input type="text" id="dSocio3" formControlName="dSocio3" class="form__input">
+        </div>
+      </div>
+
+      <div class="col-5">
+        <div class="form__container">
+          <label class="form__label">Puesto</label>
+          <input type="text" id="puesto3" class="form__input">
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="familiar" id="familiar3">
+          <label class="form-check-label" for="familiar3">
+            F
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- #tipo de sociedad legal que rige en empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa1.e}}</label>
+      <input type="text" id="eTipoSociedad" formControlName="eTipoSociedad" class="form__input" autocomplete="off">
+    </div>
+
+    <!-- #politicas y procedimientos de empresa -->
+    <p class="mb-4 form__label">{{Preguntas.etapa1.f}}</p>
+
+    <div class="form__container">
+      <!-- <div class="form-check">
+      <input class="form-check-input" type="radio" value="si" name="fPoliticas" id="fPoliticas"
+        (change)="radioChange($event)">
+      <label class="form-check-label" for="fPoliticas">
+        Si
+      </label>
+    </div>
+    <div class="form-check">
+      <input checked class="form-check-input" type="radio" value="no" name="fPoliticas" id="radio2"
+        (change)="radioChange($event)">
+      <label class="form-check-label" for="radio2">
+        No
+      </label>
+    </div> -->
 
 
-<label></label>
-</div>
-<!-- Fin parte 1 -->
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="si" id="fPoliticas" formControlName="fPoliticas"
+          (change)="radioChange($event)">
+        <label class="form-check-label" for="fPoliticas">
+          Si
+        </label>
+      </div>
+    </div>
+
+    <!-- #la respuesta fue SI-->
+    <div class="form__container" *ngIf="politicaSi">
+      <label class="form__label">{{Preguntas.etapa1.g}}</label>
+      <textarea id="gPoliticasSi" formControlName="gPoliticasSi" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #cuenta con seguro de empresa -->
+    <p class="mb-4 form__label">{{Preguntas.etapa1.h}}</p>
+
+    <div class="form__container">
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" value="si" name="radioBtn2" id="radio1"
+          (change)="radioChange2($event)">
+        <label class="form-check-label" for="radio1">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input checked class="form-check-input" type="radio" value="no" name="radioBtn2" id="radio2"
+          (change)="radioChange2($event)">
+        <label class="form-check-label" for="radio2">
+          No
+        </label>
+      </div> -->
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="si" id="fSeguro" name="fSeguro"
+          (change)="radioChange2($event)">
+        <label class="form-check-label" for="fSeguro">
+          Si
+        </label>
+      </div>
+    </div>
+
+
+    <!-- #la respuesta fue SI-->
+    <div class="form__container" *ngIf="seguroSi">
+      <label class="form__label">De qué tipo:</label>
+      <textarea formControlName="hSeguroEmpresarial" id="hSeguroEmpresarial"
+        class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa1.i}}</label>
+      <textarea id="iOrganigrama" formControlName="iOrganigrama" class="form__input form_textarea"></textarea>
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa2()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa2 ----------------->
+  <div class="etapa2" *ngIf="mostrarEtapa2">
+    <div class="etapa__title">
+      <h3>Etapa 2: {{Preguntas.etapa2.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa2.contenidos"></p>
+    </div>
+
+    <!-- #input vision de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.a}}</label>
+      <textarea id="aVision" formControlName="aVision" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input mision de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.b}}</label>
+      <textarea id="bMision" formControlName="bMision" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input creencias de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.c}}</label>
+      <textarea id="cCreencias" formControlName="cCreencias" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input valores de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.d}}</label>
+      <textarea id="dValores" formControlName="dValores" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input principios de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.e}}</label>
+      <textarea id="ePrincipios" formControlName="ePrincipios" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="etapa__info">
+      <h5>{{Preguntas.etapa2.f}}</h5>
+      <p>{{Preguntas.etapa2.tipoLiderazgo}}</p>
+
+      <ol>
+        <li>
+          <div>
+            <b>{{Preguntas.etapa2.lid1.nombre}}</b>
+            <p>{{Preguntas.etapa2.lid1.concepto}}</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>{{Preguntas.etapa2.lid2.nombre}}</b>
+            <p>{{Preguntas.etapa2.lid2.concepto}}</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>{{Preguntas.etapa2.lid3.nombre}}</b>
+            <p>{{Preguntas.etapa2.lid3.concepto}}</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>{{Preguntas.etapa2.lid4.nombre}}</b>
+            <p>{{Preguntas.etapa2.lid4.concepto}}</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>{{Preguntas.etapa2.lid5.nombre}}</b>
+            <p>{{Preguntas.etapa2.lid5.concepto}}</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- #input tipo liderazgo de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.f_choice}}</label>
+      <textarea id="fTipoDeLiderazgo" formControlName="fTipoDeLiderazgo" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input equipo de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.g}}</label>
+      <textarea id="gEquipoDirectivo" formControlName="gEquipoDirectivo" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input logros de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.h}}</label>
+      <textarea id="hLogros" formControlName="hLogros" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #input proyectos de empresa -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa2.i}}</label>
+      <textarea id="iProyectos" formControlName="iProyectos" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- fortalezas y debilidades -->
+    <div class="form__container fortaleza__debilidad">
+
+      <p class="fort_deb_text">{{Preguntas.etapa3.textof}}</p>
+
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
+            <textarea id="fortalezasDirectivo" formControlName="fortalezasDirectivo"
+              class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.debilidades}}</p>
+            <textarea id="debilidadesDirectivo" formControlName="debilidadesDirectivo"
+              class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa3()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa3 ----------------->
+  <div class="etapa3" *ngIf="mostrarEtapa3">
+    <div class="etapa__title">
+      <h3>Etapa 3: {{Preguntas.etapa3.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa3.contenido.p1"></p>
+      <p [innerHTML]="Preguntas.etapa3.contenido.p2"></p>
+      <p [innerHTML]="Preguntas.etapa3.contenido.p3"></p>
+      <p [innerHTML]="Preguntas.etapa3.contenido.p4"></p>
+      <p [innerHTML]="Preguntas.etapa3.contenido.p5"></p>
+    </div>
+
+    <!-- si/no cuentan con programa -->
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa3.a}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="aProgramaCrecimiento"
+          id="aProgramaCrecimiento" value="aProgramaCrecimiento">
+        <label class="form-check-label" for="aProgramaCrecimiento">
+          Si
+        </label>
+      </div>
+
+    </div>
+
+    <!-- #rasgos -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa3.b}}</label>
+      <textarea id="bRasgos" formControlName="bRasgos" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #cCapacitacion -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa3.c}}</label>
+      <textarea id="cCapacitacion" formControlName="cCapacitacion" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #dPlanDeVida -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa3.d}}</label>
+      <textarea id="dPlanDeVida" formControlName="dPlanDeVida" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- si/no -->
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa3.e}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" value="si" name="radioBtn1" id="radio1Si">
+        <label class="form-check-label" for="radio1Si">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" value="no" name="radioBtn1" id="radio1No" checked>
+        <label class="form-check-label" for="radio1No">
+          No
+        </label>
+      </div> -->
+
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="si" formControlName="eInduccion" id="eInduccion">
+        <label class="form-check-label" for="eInduccion">
+          Si
+        </label>
+      </div>
+
+      <div>
+        <p>Por qué:</p>
+        <textarea id="ePorque" formControlName="ePorque" class="form__input form_textarea"></textarea>
+      </div>
+    </div>
+
+    <!-- #num empleadas -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa3.f}}</label>
+      <input type="number" id="fMujeres" formControlName="fMujeres" class="form__input">
+    </div>
+
+    <!-- #num empleados -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa3.g}}</label>
+      <input type="number" id="gHombres" formControlName="gHombres" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa3.h}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn2" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn2" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="hCondicion">
+        <label class="form-check-label" for="hCondicion">
+          Si
+        </label>
+      </div>
+
+      <p>¿Por qué? o ¿Ya lo tiene?</p>
+      <textarea id="hReactivo" formControlName="hReactivo" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- fortalezas y debilidades -->
+    <div class="form__container fortaleza__debilidad">
+
+      <p class="fort_deb_text">{{Preguntas.etapa3.textof}}</p>
+
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
+            <textarea id="fortalezasGeneral" formControlName="fortalezasGeneral"
+              class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.debilidades}}</p>
+            <textarea id="debilidadesGeneral" formControlName="debilidadesGeneral"
+              class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa4()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa4 ----------------->
+  <div class="etapa4" *ngIf="mostrarEtapa4">
+    <div class="etapa__title">
+      <h3>Etapa 4: {{Preguntas.etapa4.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa4.contenido"></p>
+    </div>
+
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.a}}</label>
+      <textarea id="aObjetivos" formControlName="aObjetivos" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- #explique sobre equipo -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.b}}</label>
+      <select id="bFodaTime" formControlName="bFodaTime" class="form__select" aria-label="Default select example">
+
+        <option value="0" selected>Nunca</option>
+        <option value="1">Cada medio año </option>
+        <option value="2">1 año</option>
+        <option value="3">2 años</option>
+        <option value="4">3 años</option>
+      </select>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.b1}}</label>
+      <textarea id="bFodaPlanea" formControlName="bFodaPlanea" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.b2}}</label>
+      <textarea id="bFodaOportunidades" formControlName="bFodaOportunidades"
+        class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.b3}}</label>
+      <textarea id="bFodaAmenazas" formControlName="bFodaAmenazas" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.b4}}</label>
+      <textarea id="bFodaEstrategia" formControlName="bFodaEstrategia" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="etapa__info">
+      <h5>{{Preguntas.etapa4.c.titulo}}</h5>
+      <p [innerHTML]="Preguntas.etapa4.c.p1"></p>
+      <p [innerHTML]="Preguntas.etapa4.c.p2"></p>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.c.p3}}</label>
+      <textarea id="cControlGestion" formControlName="cControlGestion" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa4.c2}}</label>
+      <textarea id="cEsquema" formControlName="cEsquema" class="form__input form_textarea"></textarea>
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa5()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa5 ----------------->
+  <div class="etapa5" *ngIf="mostrarEtapa5">
+    <div class="etapa__title">
+      <h3>Etapa 5: {{Preguntas.etapa5.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa5.contenido"></p>
+    </div>
+
+
+    <!-- #explique sobre equipo -->
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa5.a}}</label>
+      <select id="aTipoEmpresa" formControlName="aTipoEmpresa" class="form__select" aria-label="Default select example">
+
+        <option value="0" selected>Maquilador</option>
+        <option value="1">Fabricante</option>
+        <option value="2">Comercializadora</option>
+      </select>
+    </div>
+
+    <!-- Se eligio maquilador -->
+    <div>
+      <div class="form__container">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="">
+              <label class="form__label">{{Preguntas.etapa5.b}}</label>
+              <input type="number" id="bPlantas" formControlName="bPlantas" class="form__input" autocomplete="off">
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="">
+              <label class="form__label">{{Preguntas.etapa5.b2}}</label>
+              <input type="number" id="bTamaño" formControlName="bTamaño" class="form__input" autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa5.c}}</label>
+      <input type="number" id="cLineasPro" formControlName="cLineasPro" class="form__input" autocomplete="off">
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa5.d}}</label>
+      <input type="number" id="dNumerosEmpleados" formControlName="dNumerosEmpleados" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa5.e}}</label>
+      <textarea id="eCapacidadProductiva" formControlName="eCapacidadProductiva"
+        class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa5.f}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" value="si" type="radio" name="radioModificacion" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" value="no" type="radio" name="radioModificacion" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+
+      <div class="form-check">
+        <input class="form-check-input" value="si" type="checkbox" formControlName="fModificacionsPlanta"
+          id="fModificacionsPlanta">
+        <label class="form-check-label" for="fModificacionsPlanta">
+          Si
+        </label>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa5.g}}</label>
+      <textarea id="gPorqueModificacion" formControlName="gPorqueModificacion"
+        class="form__input form_textarea"></textarea>
+    </div>
+
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa5.h}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioTecnologia" id="radioSi" checked>
+        <label class="form-check-label" for="radioSi">
+          Nacional
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioTecnologia" id="radioNo">
+        <label class="form-check-label" for="radioNo">
+          Extranjera
+        </label>
+      </div>
+      <div>
+        <p>¿De qué pais?</p>
+        <input type="text" id="hTecnologia" formControlName="hTecnologia" class="form__input">
+      </div>
+    </div>
+
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa5.i}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioMantenimiento" id="radioSi" checked>
+        <label class="form-check-label" for="radioSi">
+          Nacional
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioMantenimiento" id="radioNo">
+        <label class="form-check-label" for="radioNo">
+          Extranjero
+        </label>
+      </div>
+      <div>
+        <p>¿De qué pais?</p>
+        <input type="text" id="iManteyRep" formControlName="iManteyRep" class="form__input">
+      </div>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa5.j}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioMateria" id="radioSi" checked>
+        <label class="form-check-label" for="radioSi">
+          Nacional
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioMateria" id="radioNo">
+        <label class="form-check-label" for="radioNo">
+          Importada
+        </label>
+      </div>
+
+      <div>
+        <p>¿De qué pais?</p>
+        <input type="text" id="jMateriaPrima" formControlName="jMateriaPrima" class="form__input">
+      </div>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa5.k}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioHerramienta" id="radioSi" checked>
+        <label class="form-check-label" for="radioSi">
+          Nacional
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioHerramienta" id="radioNo">
+        <label class="form-check-label" for="radioNo">
+          Importada
+        </label>
+      </div>
+      <div>
+        <p>¿De qué pais?</p>
+        <input type="text" id="kHerramientas" formControlName="kHerramientas" class="form__input">
+      </div>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa5.l}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioSuministro" id="radioSi" checked>
+        <label class="form-check-label" for="radioSi">
+          Nacional
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioSuministro" id="radioNo">
+        <label class="form-check-label" for="radioNo">
+          Importada
+        </label>
+      </div>
+
+      <div>
+        <p>¿De qué pais?</p>
+        <input type="text" id="lSuministroG" formControlName="lSuministroG" class="form__input">
+      </div>
+    </div>
+
+    <!-- fortalezas y debilidades -->
+    <div class="form__container fortaleza__debilidad">
+
+      <p class="fort_deb_text">{{Preguntas.etapa5.m}}</p>
+
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
+            <textarea id="mFortalezas" formControlName="mFortalezas" class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.debilidades}}</p>
+            <textarea id="mDebilidades" formControlName="mDebilidades" class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa6()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa6 ----------------->
+  <div class="etapa6" *ngIf="mostrarEtapa6">
+    <div class="etapa__title">
+      <h3>Etapa 6: {{Preguntas.etapa6.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa6.contenido"></p>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa6.a}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="aMercadotecnica" id="aMercadotecnica">
+        <label class="form-check-label" for="aMercadotecnica">
+          Si
+        </label>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.b}}</label>
+      <textarea formControlName="bParticipacion" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.c}}</label>
+      <input type="number" formControlName="cLineasProd" class="form__input" autocomplete="off">
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.d}}</label>
+      <input type="number" formControlName="dProdProm" class="form__input" autocomplete="off">
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.e}}</label>
+      <input type="number" formControlName="eRegMar" class="form__input" autocomplete="off">
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa6.f}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div>
+
+      <textarea formControlName="fProm" class="form__input form_textarea" placeholder="¿Por qué?"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.g}}</label>
+      <textarea formControlName="gCadenaDis" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.h}}</label>
+      <textarea formControlName="hEscala" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa6.i}}</p>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+            <label class="form-check-label" for="flexCheckDefault">
+              Revistas Especializadas
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+            <label class="form-check-label" for="flexCheckChecked">
+              flyers
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+            <label class="form-check-label" for="flexCheckChecked">
+              Folders con información especial
+            </label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+            <label class="form-check-label" for="flexCheckDefault">
+              trípticos
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+            <label class="form-check-label" for="flexCheckChecked">
+              presentaciones PPT
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="">
+            <label class="form-check-label" for="flexCheckChecked">
+              Relaciones publicas
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <textarea formControlName="iTipoPublic" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa6.j}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+      <div class="form-check">
+        <input class="form-check-input" value="si" type="checkbox" formControlName="jFuerzaVen" id="jFuerzaVen">
+        <label class="form-check-label" for="jFuerzaVen">
+          Si
+        </label>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.k}}</label>
+      <textarea formControlName="kTipoDeCapac" class="form__input form_textarea"></textarea>
+    </div>
+
+    <!-- fortalezas y debilidades -->
+    <div class="form__container fortaleza__debilidad">
+
+      <p class="fort_deb_text">{{Preguntas.etapa6.l}}</p>
+
+      <div class="row">
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
+            <textarea formControlName="lFortalezas" class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+        <div class="col-6">
+          <div>
+            <p class="text">{{Preguntas.etapa3.debilidades}}</p>
+            <textarea formControlName="lDebilidades" class="form__input form_textarea"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa7()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa7 ----------------->
+  <div class="etapa7" *ngIf="mostrarEtapa7">
+    <div class="etapa__title">
+      <h3>Etapa 7: {{Preguntas.etapa7.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa7.contenido"></p>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa7.a}}</label>
+      <input type="number" formControlName="aPatentes" class="form__input" autocomplete="off">
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa7.b}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="bInvProyect" id="bInvProyect">
+        <label class="form-check-label" for="bInvProyect">
+          Si
+        </label>
+      </div>
+
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa7.c}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div> -->
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="cInvUniv" id="cInvUniv">
+        <label class="form-check-label" for="cInvUniv">
+          Si
+        </label>
+      </div>
+
+      <textarea class="form__input form_textarea" placeholder="¿Cuál?"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa7.d}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="dProdCal" id="dProdCal">
+        <label class="form-check-label" for="dProdCal">
+          Si
+        </label>
+      </div>
+
+      <textarea class="form__input form_textarea" placeholder="Por qué?"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa7.e}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="eProveeduria" id="eProveeduria">
+        <label class="form-check-label" for="eProveeduria">
+          Si
+        </label>
+      </div>
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa8()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa8 ----------------->
+  <div class="etapa8" *ngIf="mostrarEtapa8">
+    <div class="etapa__title">
+      <h3>Etapa 8: {{Preguntas.etapa8.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa8.contenido"></p>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa8.a}}</label>
+      <textarea formControlName="aPrincObj" class="form__input form_textarea"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa8.b}}</label>
+
+      <input type="file" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa8.c}}</label>
+      <input type="text" formControlName="cPersonaFina" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa8.d}}</p>
+
+      <div class="subInput">
+        <label for="">Producción:</label>
+        <input type="text" formControlName="dPresupuesto" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">Mercadotecnia:</label>
+        <input type="text" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">Investigación y Desarrollo:</label>
+        <input type="text" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">Reinversiones:</label>
+        <input type="text" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">Pago de Deuda:</label>
+        <input type="text" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">Otros (Especifique):</label>
+        <input type="text" class="form__input">
+      </div>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa8.e}}</label>
+      <input type="text" formControlName="eEndeudamiento" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa8.f}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="fVentasCredito" id="fVentasCredito">
+        <label class="form-check-label" for="fVentasCredito">
+          Si
+        </label>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa8.g}}</label>
+
+      <input type="text" formControlName="gApalancamiento" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa8.h}}</p>
+
+      <div class="subInput">
+        <label for="">{{Preguntas.etapa8.ha}}</label>
+        <input type="text" formControlName="hMinImpA" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">{{Preguntas.etapa8.hb}}</label>
+        <input type="text" formControlName="hMinImpB" class="form__input">
+      </div>
+
+      <div class="subInput">
+        <label for="">{{Preguntas.etapa8.hc}}</label>
+        <input type="text" formControlName="hMinImpC" class="form__input">
+      </div>
+
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa9()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa9 ----------------->
+  <div class="etapa9" *ngIf="mostrarEtapa9">
+    <div class="etapa__title">
+      <h3>Etapa 9: {{Preguntas.etapa9.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa9.contenido.p1"></p>
+      <p [innerHTML]="Preguntas.etapa9.contenido.p2"></p>
+      <p [innerHTML]="Preguntas.etapa9.contenido.p3"></p>
+      <p [innerHTML]="Preguntas.etapa9.contenido.p4"></p>
+      <p [innerHTML]="Preguntas.etapa9.contenido.p5"></p>
+      <p [innerHTML]="Preguntas.etapa9.contenido.p6"></p>
+
+      <ol>
+        <li>Logística interna</li>
+        <li>Operaciones</li>
+        <li>Logística externa</li>
+        <li>Marketing y ventas</li>
+        <li>Servicios</li>
+      </ol>
+
+      <p [innerHTML]="Preguntas.etapa9.contenido.p7"></p>
+
+      <ol>
+        <li>Infraestructura</li>
+        <li>I & D</li>
+        <li>Recursos humanos</li>
+      </ol>
+
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa9.a}}</p>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="aCadenaValor" id="aCadenaValor">
+        <label class="form-check-label" for="aCadenaValor">
+          Si
+        </label>
+      </div>
+
+      <textarea class="form__input form_textarea" formControlName="aCadenaValorPor" placeholder="Por qué?"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa9.b}}</label>
+
+      <input type="file" class="form__input">
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa9.c}}</label>
+
+      <textarea class="form__input form_textarea" formControlName="cVentajaComp"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label class="form__label">{{Preguntas.etapa9.d}}</label>
+
+      <textarea class="form__input form_textarea" formControlName="dConsiAli"></textarea>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa9.e}}</label>
+
+      <textarea class="form__input form_textarea" formControlName="eConoPort"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa9.f}}</p>
+      <!-- <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
+        <label class="form-check-label" for="radioSi">
+          Si
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          No
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
+        <label class="form-check-label" for="radioNo">
+          En Proceso
+        </label>
+      </div> -->
+
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" formControlName="fCertificaciones" id="fCertificaciones">
+        <label class="form-check-label" for="fCertificaciones">
+          Si
+        </label>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa9.g}}</p>
+
+      <textarea class="form__input form_textarea" formControlName="gCertiType"></textarea>
+
+      <p class="form__label">Indique cuales</p>
+
+      <textarea class="form__input form_textarea" formControlName="gCertiTypeCuales"></textarea>
+    </div>
+
+    <div class="form__container">
+      <p class="form__label">{{Preguntas.etapa9.h}}</p>
+
+      <div>
+        <label>{{Preguntas.etapa9.h1}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceA"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h2}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceB"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h3}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceC"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h4}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceD"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h5}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce5"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h6}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce6"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h7}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce7"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h8}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce8"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h9}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce9"></textarea>
+      </div>
+
+      <div>
+        <label for="nombreEmpresa">{{Preguntas.etapa9.h10}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce10"></textarea>
+      </div>
+    </div>
+
+    <div class="form__container">
+      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa9.i}}</label>
+
+      <textarea class="form__input form_textarea" formControlName="iComentariosAdi"></textarea>
+    </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa10()">Siguiente</button>
+    </div>
+  </div>
+
+  <!----------------- etapa10 ----------------->
+  <div class="etapa10" *ngIf="mostrarEtapa10">
+    <div class="etapa__title">
+      <h3>Etapa 10: {{Preguntas.etapa10.titulo}}</h3>
+    </div>
+
+    <div class="etapa__info">
+      <p [innerHTML]="Preguntas.etapa10.contenido1"></p>
+
+      <ul>
+        <li>
+          {{Preguntas.etapa10.contenido2}}
+        </li>
+        <li>
+          {{Preguntas.etapa10.contenido3}}
+        </li>
+        <li>
+          {{Preguntas.etapa10.contenido4}}
+        </li>
+        <li>
+          {{Preguntas.etapa10.contenido5}}
+        </li>
+      </ul>
+
+      <span>{{Preguntas.etapa10.agradecimiento}}</span>
+    </div>
+  </div>
+
+  <div class="btn_confirm" *ngIf="mostrarEtapa10">
+    <button type="submit">Enviar Formulario</button>
+  </div>
+</form>

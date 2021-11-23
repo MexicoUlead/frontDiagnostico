@@ -173,7 +173,9 @@ export class InicioComponent implements OnInit {
   createUser() {
     this.formSubmit = true;
 
-    if (this.registerForm.invalid) return;
+    if (this.registerForm.invalid) {
+      console.log("no se completaron los datos correctamente")
+    };
 
     this.diagnoServ.crearDiagnostico(this.registerForm.value).subscribe(resp => {
       console.log('diagnostico creado');
@@ -197,5 +199,73 @@ export class InicioComponent implements OnInit {
 
   aceptaTermina() {
     //return !this.registerForm.get('').value && this.formSubmit;
+  }
+
+  enviarDiagnostico() {
+    console.log("funciona")
+  }
+
+  //inicio
+  public mostrarInicio: boolean = true;
+  //pasar a etapa 1
+  public mostrarEtapa: boolean = false;
+  siguienteEtapa() {
+    this.mostrarInicio = false;
+    this.mostrarEtapa = true;
+  }
+
+  //pasar a etapa 2
+  public mostrarEtapa2: boolean = false;
+  etapa2() {
+    this.mostrarEtapa = false;
+    this.mostrarEtapa2 = true;
+  }
+  //pasar a etapa 3
+  public mostrarEtapa3: boolean = false;
+  etapa3() {
+    this.mostrarEtapa2 = false;
+    this.mostrarEtapa3 = true;
+  }
+  //pasar a etapa 4
+  public mostrarEtapa4: boolean = false;
+  etapa4() {
+    this.mostrarEtapa3 = false;
+    this.mostrarEtapa4 = true;
+  }
+  //pasar a etapa 5
+  public mostrarEtapa5: boolean = false;
+  etapa5() {
+    this.mostrarEtapa4 = false;
+    this.mostrarEtapa5 = true;
+  }
+  //pasar a etapa 6
+  public mostrarEtapa6: boolean = false;
+  etapa6() {
+    this.mostrarEtapa5 = false;
+    this.mostrarEtapa6 = true;
+  }
+  //pasar a etapa 7
+  public mostrarEtapa7: boolean = false;
+  etapa7() {
+    this.mostrarEtapa6 = false;
+    this.mostrarEtapa7 = true;
+  }
+  //pasar a etapa 8
+  public mostrarEtapa8: boolean = false;
+  etapa8() {
+    this.mostrarEtapa7 = false;
+    this.mostrarEtapa8 = true;
+  }
+  //pasar a etapa 9
+  public mostrarEtapa9: boolean = false;
+  etapa9() {
+    this.mostrarEtapa8 = false;
+    this.mostrarEtapa9 = true;
+  }
+  //pasar a etapa 10
+  public mostrarEtapa10: boolean = false;
+  etapa10() {
+    this.mostrarEtapa9 = false;
+    this.mostrarEtapa10 = true;
   }
 }

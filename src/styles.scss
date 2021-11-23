@@ -143,3 +143,22 @@ $radius: 10px;
         }
     }
 }
+
+//boton de siguiente
+.pasarEtapa{
+    text-align: center;
+
+    button{
+        border: none;
+        text-transform: uppercase;
+        border-radius: $radius;
+        padding: 10px 20px;
+        font-weight: bold;
+        background: #009CDE;
+        color: #ffffff;
+
+        &:disabled{
+            background: #ccc;
+        }
+    }
+}

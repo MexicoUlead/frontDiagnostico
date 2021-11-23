@@ -1,5 +1,5 @@
-<form [formGroup]="registerForm">
-  <div class="inicio">
+<form [formGroup]="registerForm" (submit)="createUser()">
+  <div class="inicio" *ngIf="mostrarInicio">
     <div class="etapa__title">
       <h3>Diagnóstico Competitividad Empresaria</h3>
     </div>
@@ -43,13 +43,19 @@
           <label class="form-check-label" for="autoriza">
             Autorización
           </label>
+          <br>
         </div>
       </div>
+    </div>
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="siguienteEtapa()">Siguiente</button>
     </div>
   </div>
 
   <!----------------- etapa1 ----------------->
-  <div class="etapa1">
+  <div class="etapa1" *ngIf="mostrarEtapa">
     <div class="etapa__title">
       <h3>Etapa1: {{Preguntas.etapa1.titulo}}</h3>
     </div>
@@ -242,10 +248,16 @@
       <label class="form__label">{{Preguntas.etapa1.i}}</label>
       <textarea id="iOrganigrama" formControlName="iOrganigrama" class="form__input form_textarea"></textarea>
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa2()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa2 ----------------->
-  <div class="etapa2">
+  <div class="etapa2" *ngIf="mostrarEtapa2">
     <div class="etapa__title">
       <h3>Etapa 2: {{Preguntas.etapa2.titulo}}</h3>
     </div>
@@ -368,10 +380,16 @@
         </div>
       </div>
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa3()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa3 ----------------->
-  <div class="etapa3">
+  <div class="etapa3" *ngIf="mostrarEtapa3">
     <div class="etapa__title">
       <h3>Etapa 3: {{Preguntas.etapa3.titulo}}</h3>
     </div>
@@ -402,7 +420,7 @@
 
       <div class="form-check">
         <input class="form-check-input" type="checkbox" formControlName="aProgramaCrecimiento"
-          id="aProgramaCrecimiento">
+          id="aProgramaCrecimiento" value="aProgramaCrecimiento">
         <label class="form-check-label" for="aProgramaCrecimiento">
           Si
         </label>
@@ -518,10 +536,15 @@
         </div>
       </div>
     </div>
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa4()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa4 ----------------->
-  <div class="etapa4">
+  <div class="etapa4" *ngIf="mostrarEtapa4">
     <div class="etapa__title">
       <h3>Etapa 4: {{Preguntas.etapa4.titulo}}</h3>
     </div>
@@ -585,10 +608,16 @@
       <label class="form__label">{{Preguntas.etapa4.c2}}</label>
       <textarea id="cEsquema" formControlName="cEsquema" class="form__input form_textarea"></textarea>
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa5()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa5 ----------------->
-  <div class="etapa5">
+  <div class="etapa5" *ngIf="mostrarEtapa5">
     <div class="etapa__title">
       <h3>Etapa 5: {{Preguntas.etapa5.titulo}}</h3>
     </div>
@@ -801,10 +830,16 @@
         </div>
       </div>
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa6()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa6 ----------------->
-  <div class="etapa6">
+  <div class="etapa6" *ngIf="mostrarEtapa6">
     <div class="etapa__title">
       <h3>Etapa 6: {{Preguntas.etapa6.titulo}}</h3>
     </div>
@@ -982,10 +1017,15 @@
         </div>
       </div>
     </div>
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa7()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa7 ----------------->
-  <div class="etapa7">
+  <div class="etapa7" *ngIf="mostrarEtapa7">
     <div class="etapa__title">
       <h3>Etapa 7: {{Preguntas.etapa7.titulo}}</h3>
     </div>
@@ -1069,10 +1109,16 @@
         </label>
       </div>
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa8()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa8 ----------------->
-  <div class="etapa8">
+  <div class="etapa8" *ngIf="mostrarEtapa8">
     <div class="etapa__title">
       <h3>Etapa 8: {{Preguntas.etapa8.titulo}}</h3>
     </div>
@@ -1171,10 +1217,16 @@
       </div>
 
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa9()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa9 ----------------->
-  <div class="etapa9">
+  <div class="etapa9" *ngIf="mostrarEtapa9">
     <div class="etapa__title">
       <h3>Etapa 9: {{Preguntas.etapa9.titulo}}</h3>
     </div>
@@ -1340,10 +1392,16 @@
 
       <textarea class="form__input form_textarea" formControlName="iComentariosAdi"></textarea>
     </div>
+
+
+    <!-- boton de siguiente paso -->
+    <div class="pasarEtapa">
+      <button type="button" (click)="etapa10()">Siguiente</button>
+    </div>
   </div>
 
   <!----------------- etapa10 ----------------->
-  <div class="etapa10">
+  <div class="etapa10" *ngIf="mostrarEtapa10">
     <div class="etapa__title">
       <h3>Etapa 10: {{Preguntas.etapa10.titulo}}</h3>
     </div>
@@ -1370,7 +1428,7 @@
     </div>
   </div>
 
-  <div class="btn_confirm">
+  <div class="btn_confirm" *ngIf="mostrarEtapa10">
     <button type="submit">Enviar Formulario</button>
   </div>
 </form>

@@ -14,13 +14,20 @@ h5 {
     padding: 0;
 }
 
-$clr-primary: #18ffff;
-$clr-primary-light: #adffff;
-$clr-primary-dark: #091034;
+$clr-primary: #009cde;
+$clr-secondary: #006093;
 $black: #000000;
 $white: #ffffff;
 
 $radius: 10px;
+
+body {
+    position: relative;
+    background: url("../src/assets/images/fondo.png");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
 
 .logoUlead {
     text-align: center;
@@ -32,13 +39,13 @@ $radius: 10px;
     margin-bottom: 30px;
 
     h3 {
-        color: #006093;
+        color: $clr-secondary;
     }
 }
 
 .etapa__info {
     h5 {
-        color: #006093;
+        color: $clr-secondary;
         margin-bottom: 20px;
     }
     p {
@@ -47,10 +54,15 @@ $radius: 10px;
 }
 
 .panel {
-    border: 2px solid #000000;
-    border-radius: 30px;
-    padding: 30px;
+    background: $white;
+    border-radius: 10px;
+    padding: 50px;
     margin-bottom: 120px;
+    box-shadow: 0px 0px 15px $clr-secondary;
+
+    @media screen and (max-width: 575px) {
+        padding: 30px;
+    }
 }
 
 .form__container {
@@ -60,7 +72,7 @@ $radius: 10px;
     transition: all 0.3s ease-in-out;
 
     &:hover {
-        border-color: $clr-primary-light;
+        border-color: $clr-secondary;
     }
 
     &:focus {
@@ -73,7 +85,7 @@ $radius: 10px;
         left: 0;
         width: 100%;
         height: 100%;
-        border: 2px solid #009cde;
+        border: 2px solid $clr-primary;
         border-radius: 5px;
         font-family: inherit;
         font-size: inherit;
@@ -81,6 +93,11 @@ $radius: 10px;
         outline: none;
         padding: 0.5rem;
         background: none;
+        transition: all 0.3s ease-in-out;
+
+        &:focus {
+            box-shadow: 0px 0px 10px $clr-secondary;
+        }
     }
 
     .form_textarea {
@@ -119,46 +136,81 @@ $radius: 10px;
     grid-template-columns: 40% 60%;
     align-items: center;
     margin-bottom: 10px;
+
+    @media screen and (max-width: 575px) {
+        grid-template-columns: 100%;
+    }
 }
 
-
-.btn_confirm{
+.btn_confirm {
     position: relative;
     margin-top: 50px;
 
-    button{
+    button {
         position: relative;
         width: 100%;
-        background: #009cde;
+        background: $clr-primary;
         color: #ffffff;
         border: none;
         border-radius: 30px;
         padding: 10px;
         font-size: 20px;
         font-weight: bold;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
 
-        &:hover{
+        &:hover {
             background: #066598;
         }
     }
 }
 
 //boton de siguiente
-.pasarEtapa{
+.pasarEtapa {
     text-align: center;
 
-    button{
+    button {
+        position: relative;
         border: none;
         text-transform: uppercase;
         border-radius: $radius;
         padding: 10px 20px;
+        width: 14em;
         font-weight: bold;
-        background: #009CDE;
+        background: $clr-primary;
         color: #ffffff;
+        z-index: 1;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
 
-        &:disabled{
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: $clr-secondary;
+            z-index: -1;
+            transition: all 0.3s ease-in-out;
+        }
+
+        &:hover::before {
+            width: 100%;
+        }
+
+        &:disabled {
             background: #ccc;
         }
+    }
+}
+
+//check
+.form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    &:checked {
+        background-color: #009cde;
+        border-color: #009cde;
     }
 }

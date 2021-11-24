@@ -1,7 +1,7 @@
 <form [formGroup]="registerForm" (submit)="createUser()">
   <div class="inicio" *ngIf="mostrarInicio">
     <div class="etapa__title">
-      <h3>Diagnóstico Competitividad Empresaria</h3>
+      <h3>Diagnóstico Competitividad Empresarial</h3>
     </div>
     <div class="etapa__info">
       <p>
@@ -20,7 +20,7 @@
 
       <b>Acuerdo de Confidencialidad</b>
       <br>
-      <span>
+      <p>
         La persona firmante que presenta este diagnóstico declara que la información contenida es estrictamente de
         carácter
         Confidencial y de Uso Restringido, y solo podrá ser usada para efectos de la creación y organización de un plan
@@ -30,16 +30,16 @@
         compromete y responsabiliza a hacer del mismo un buen uso, y a no revelar su contenido sin la autorización
         expresa, y
         por escrito de su Director(a) General
-      </span>
+      </p>
 
       <div class="form__container">
         <label class="form__label">Firma (nombre)</label>
-        <input type="text" id="firma" formControlName="firma" class="form__input">
+        <input type="text" #firma formControlName="firma" class="form__input" maxlength="50">
       </div>
 
       <div class="form__container">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="autoriza" id="autoriza" formControlName="autoriza">
+          <input class="form-check-input" type="checkbox" value="autoriza" #autoriza formControlName="autoriza">
           <label class="form-check-label" for="autoriza">
             Autorización
           </label>
@@ -49,8 +49,8 @@
     </div>
 
     <!-- boton de siguiente paso -->
-    <div class="pasarEtapa">
-      <button type="button" (click)="siguienteEtapa()">Siguiente</button>
+    <div class="pasarEtapa Aetapa1">
+      <button type="button" (click)="siguienteEtapa(firma.value, autoriza.checked)">Siguiente</button>
     </div>
   </div>
 
@@ -63,7 +63,7 @@
     <!-- #input nombre de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa1.a}}</label>
-      <input type="text" id="nombreEmpresa" formControlName="nombreEmpresa" class="form__input">
+      <input type="text" #nombreEmpresa formControlName="nombreEmpresa" class="form__input">
     </div>
 
     <div class="row">
@@ -71,19 +71,17 @@
         <!-- #fecha fundacion de empresa -->
         <div class="form__container">
           <label class="form__label">{{Preguntas.etapa1.b}}</label>
-          <input type="date" id="antiguedad" formControlName="antiguedad" class="form__input">
+          <input type="date" #antiguedad formControlName="antiguedad" class="form__input">
         </div>
       </div>
       <div class="col-12 col-sm-12 col-md-12 col-lg-6">
         <!-- #organizacion de empresa -->
         <div class="form__container">
           <label class="form__label">{{Preguntas.etapa1.c.pregunta}}</label>
-          <select id="typeOrganizacion" formControlName="typeOrganizacion" class="form__select"
-            aria-label="Default select example">
-
-            <option value="1" selected>Familiar (todos los socios son parientes) </option>
-            <option value="2">No familia (ninguno de los socios es pariente)</option>
-            <option value="3">Mixta (cuenta con socios familiares y no familiares)</option>
+          <select #typeOrganizacion formControlName="typeOrganizacion" class="form__select">
+            <option value="Familiar" d>Familiar (todos los socios son parientes) </option>
+            <option value="No Familiar">No familia (ninguno de los socios es pariente)</option>
+            <option value="Mixta">Mixta (cuenta con socios familiares y no familiares)</option>
           </select>
         </div>
       </div>
@@ -93,19 +91,19 @@
     <p class="mb-4 form__label">{{Preguntas.etapa1.d}}</p>
 
     <div class="row">
-      <div class="col-5">
+      <div class="col-10">
         <div class="form__container">
-          <label class="form__label">Nombre</label>
+          <label class="form__label">Nombre y Puesto</label>
           <input type="text" id="dSocio1" formControlName="dSocio1" class="form__input">
         </div>
       </div>
 
-      <div class="col-5">
+      <!-- <div class="col-5">
         <div class="form__container">
           <label class="form__label">Puesto</label>
           <input type="text" id="puesto1" class="form__input">
         </div>
-      </div>
+      </div> -->
 
       <div class="col-2">
         <div class="form-check">
@@ -118,19 +116,19 @@
     </div>
 
     <div class="row">
-      <div class="col-5">
+      <div class="col-10">
         <div class="form__container">
-          <label class="form__label">Nombre</label>
+          <label class="form__label">Nombre y Puesto</label>
           <input type="text" id="dSocio2" formControlName="dSocio2" class="form__input" autocomplete="off">
         </div>
       </div>
 
-      <div class="col-5">
+      <!-- <div class="col-5">
         <div class="form__container">
           <label class="form__label">Puesto</label>
           <input type="text" id="puesto2" class="form__input" autocomplete="off">
         </div>
-      </div>
+      </div> -->
 
       <div class="col-2">
         <div class="form-check">
@@ -143,19 +141,19 @@
     </div>
 
     <div class="row">
-      <div class="col-5">
+      <div class="col-10">
         <div class="form__container">
-          <label class="form__label">Nombre</label>
+          <label class="form__label">Nombre y Puesto</label>
           <input type="text" id="dSocio3" formControlName="dSocio3" class="form__input">
         </div>
       </div>
 
-      <div class="col-5">
+      <!-- <div class="col-5">
         <div class="form__container">
           <label class="form__label">Puesto</label>
           <input type="text" id="puesto3" class="form__input">
         </div>
-      </div>
+      </div> -->
 
       <div class="col-2">
         <div class="form-check">
@@ -170,28 +168,13 @@
     <!-- #tipo de sociedad legal que rige en empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa1.e}}</label>
-      <input type="text" id="eTipoSociedad" formControlName="eTipoSociedad" class="form__input" autocomplete="off">
+      <input type="text" #eTipoSociedad formControlName="eTipoSociedad" class="form__input" autocomplete="off">
     </div>
 
     <!-- #politicas y procedimientos de empresa -->
     <p class="mb-4 form__label">{{Preguntas.etapa1.f}}</p>
 
     <div class="form__container">
-      <!-- <div class="form-check">
-      <input class="form-check-input" type="radio" value="si" name="fPoliticas" id="fPoliticas"
-        (change)="radioChange($event)">
-      <label class="form-check-label" for="fPoliticas">
-        Si
-      </label>
-    </div>
-    <div class="form-check">
-      <input checked class="form-check-input" type="radio" value="no" name="fPoliticas" id="radio2"
-        (change)="radioChange($event)">
-      <label class="form-check-label" for="radio2">
-        No
-      </label>
-    </div> -->
-
 
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="si" id="fPoliticas" formControlName="fPoliticas"
@@ -212,20 +195,6 @@
     <p class="mb-4 form__label">{{Preguntas.etapa1.h}}</p>
 
     <div class="form__container">
-      <!-- <div class="form-check">
-        <input class="form-check-input" type="radio" value="si" name="radioBtn2" id="radio1"
-          (change)="radioChange2($event)">
-        <label class="form-check-label" for="radio1">
-          Si
-        </label>
-      </div>
-      <div class="form-check">
-        <input checked class="form-check-input" type="radio" value="no" name="radioBtn2" id="radio2"
-          (change)="radioChange2($event)">
-        <label class="form-check-label" for="radio2">
-          No
-        </label>
-      </div> -->
 
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="si" id="fSeguro" name="fSeguro"
@@ -252,7 +221,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
-      <button type="button" (click)="etapa2()">Siguiente</button>
+      <button type="button" (click)="etapa2(nombreEmpresa.value, antiguedad.value, eTipoSociedad.value)">Siguiente</button>
     </div>
   </div>
 
@@ -364,14 +333,14 @@
       <p class="fort_deb_text">{{Preguntas.etapa3.textof}}</p>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
             <textarea id="fortalezasDirectivo" formControlName="fortalezasDirectivo"
               class="form__input form_textarea"></textarea>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
             <textarea id="debilidadesDirectivo" formControlName="debilidadesDirectivo"
@@ -405,18 +374,6 @@
     <!-- si/no cuentan con programa -->
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa3.a}}</p>
-      <!-- <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
-        <label class="form-check-label" for="radioSi">
-          Si
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
-        <label class="form-check-label" for="radioNo">
-          No
-        </label>
-      </div> -->
 
       <div class="form-check">
         <input class="form-check-input" type="checkbox" formControlName="aProgramaCrecimiento"
@@ -431,13 +388,13 @@
     <!-- #rasgos -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.b}}</label>
-      <textarea id="bRasgos" formControlName="bRasgos" class="form__input form_textarea"></textarea>
+      <textarea #bRasgos formControlName="bRasgos" class="form__input form_textarea"></textarea>
     </div>
 
     <!-- #cCapacitacion -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.c}}</label>
-      <textarea id="cCapacitacion" formControlName="cCapacitacion" class="form__input form_textarea"></textarea>
+      <textarea #cCapacitacion formControlName="cCapacitacion" class="form__input form_textarea"></textarea>
     </div>
 
     <!-- #dPlanDeVida -->
@@ -490,19 +447,7 @@
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa3.h}}</p>
-      <!-- <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioBtn2" id="radioSi">
-        <label class="form-check-label" for="radioSi">
-          Si
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioBtn2" id="radioNo" checked>
-        <label class="form-check-label" for="radioNo">
-          No
-        </label>
-      </div> -->
-
+  
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="hCondicion">
         <label class="form-check-label" for="hCondicion">
@@ -520,14 +465,14 @@
       <p class="fort_deb_text">{{Preguntas.etapa3.textof}}</p>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
             <textarea id="fortalezasGeneral" formControlName="fortalezasGeneral"
               class="form__input form_textarea"></textarea>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
             <textarea id="debilidadesGeneral" formControlName="debilidadesGeneral"
@@ -539,7 +484,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
-      <button type="button" (click)="etapa4()">Siguiente</button>
+      <button type="button" (click)="etapa4(bRasgos.value, cCapacitacion.value)">Siguiente</button>
     </div>
   </div>
 
@@ -677,30 +622,17 @@
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa5.f}}</p>
-      <!-- <div class="form-check">
-        <input class="form-check-input" value="si" type="radio" name="radioModificacion" id="radioSi">
-        <label class="form-check-label" for="radioSi">
-          Si
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" value="no" type="radio" name="radioModificacion" id="radioNo" checked>
-        <label class="form-check-label" for="radioNo">
-          No
-        </label>
-      </div> -->
-
 
       <div class="form-check">
         <input class="form-check-input" value="si" type="checkbox" formControlName="fModificacionsPlanta"
-          id="fModificacionsPlanta">
+          id="fModificacionsPlanta" (change)="modifica($event)">
         <label class="form-check-label" for="fModificacionsPlanta">
           Si
         </label>
       </div>
     </div>
 
-    <div class="form__container">
+    <div class="form__container" *ngIf="modificacionSi">
       <label class="form__label">{{Preguntas.etapa5.g}}</label>
       <textarea id="gPorqueModificacion" formControlName="gPorqueModificacion"
         class="form__input form_textarea"></textarea>
@@ -709,7 +641,7 @@
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa5.h}}</p>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input class="form-check-input" type="radio" name="radioTecnologia" id="radioSi" checked>
         <label class="form-check-label" for="radioSi">
           Nacional
@@ -720,9 +652,9 @@
         <label class="form-check-label" for="radioNo">
           Extranjera
         </label>
-      </div>
+      </div> -->
       <div>
-        <p>¿De qué pais?</p>
+        <p>¿Nacional o Extranjera(¿De que país?)?</p>
         <input type="text" id="hTecnologia" formControlName="hTecnologia" class="form__input">
       </div>
     </div>
@@ -730,7 +662,7 @@
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa5.i}}</p>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input class="form-check-input" type="radio" name="radioMantenimiento" id="radioSi" checked>
         <label class="form-check-label" for="radioSi">
           Nacional
@@ -741,16 +673,16 @@
         <label class="form-check-label" for="radioNo">
           Extranjero
         </label>
-      </div>
+      </div> -->
       <div>
-        <p>¿De qué pais?</p>
+        <p>¿Nacional o Extranjera(¿De que país?)?</p>
         <input type="text" id="iManteyRep" formControlName="iManteyRep" class="form__input">
       </div>
     </div>
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa5.j}}</p>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input class="form-check-input" type="radio" name="radioMateria" id="radioSi" checked>
         <label class="form-check-label" for="radioSi">
           Nacional
@@ -761,17 +693,17 @@
         <label class="form-check-label" for="radioNo">
           Importada
         </label>
-      </div>
+      </div> -->
 
       <div>
-        <p>¿De qué pais?</p>
+        <p>¿Nacional o Extranjera(¿De que país?)?</p>
         <input type="text" id="jMateriaPrima" formControlName="jMateriaPrima" class="form__input">
       </div>
     </div>
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa5.k}}</p>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input class="form-check-input" type="radio" name="radioHerramienta" id="radioSi" checked>
         <label class="form-check-label" for="radioSi">
           Nacional
@@ -782,16 +714,16 @@
         <label class="form-check-label" for="radioNo">
           Importada
         </label>
-      </div>
+      </div> -->
       <div>
-        <p>¿De qué pais?</p>
+        <p>¿Nacional o Extranjera(¿De que país?)?</p>
         <input type="text" id="kHerramientas" formControlName="kHerramientas" class="form__input">
       </div>
     </div>
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa5.l}}</p>
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input class="form-check-input" type="radio" name="radioSuministro" id="radioSi" checked>
         <label class="form-check-label" for="radioSi">
           Nacional
@@ -802,10 +734,10 @@
         <label class="form-check-label" for="radioNo">
           Importada
         </label>
-      </div>
+      </div> -->
 
       <div>
-        <p>¿De qué pais?</p>
+        <p>¿Nacional o Extranjera(¿De que país?)?</p>
         <input type="text" id="lSuministroG" formControlName="lSuministroG" class="form__input">
       </div>
     </div>
@@ -816,13 +748,13 @@
       <p class="fort_deb_text">{{Preguntas.etapa5.m}}</p>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
             <textarea id="mFortalezas" formControlName="mFortalezas" class="form__input form_textarea"></textarea>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
             <textarea id="mDebilidades" formControlName="mDebilidades" class="form__input form_textarea"></textarea>
@@ -850,19 +782,6 @@
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa6.a}}</p>
-      <!-- <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioBtn1" id="radioSi">
-        <label class="form-check-label" for="radioSi">
-          Si
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioBtn1" id="radioNo" checked>
-        <label class="form-check-label" for="radioNo">
-          No
-        </label>
-      </div> -->
-
 
       <div class="form-check">
         <input class="form-check-input" type="checkbox" formControlName="aMercadotecnica" id="aMercadotecnica">
@@ -923,8 +842,8 @@
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa6.i}}</p>
 
-      <div class="row">
-        <div class="col-6">
+      <!-- <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="">
             <label class="form-check-label" for="flexCheckDefault">
@@ -944,7 +863,7 @@
             </label>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="">
             <label class="form-check-label" for="flexCheckDefault">
@@ -964,7 +883,7 @@
             </label>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <textarea formControlName="iTipoPublic" class="form__input form_textarea"></textarea>
     </div>
@@ -1003,13 +922,13 @@
       <p class="fort_deb_text">{{Preguntas.etapa6.l}}</p>
 
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
             <textarea formControlName="lFortalezas" class="form__input form_textarea"></textarea>
           </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
             <textarea formControlName="lDebilidades" class="form__input form_textarea"></textarea>
@@ -1135,7 +1054,7 @@
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa8.b}}</label>
 
-      <input type="file" class="form__input">
+      <input type="file" formControlName="file1" class="form__input">
     </div>
 
     <div class="form__container">
@@ -1272,7 +1191,7 @@
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa9.b}}</label>
 
-      <input type="file" class="form__input">
+      <input type="file" formControlName="file2" class="form__input">
     </div>
 
     <div class="form__container">

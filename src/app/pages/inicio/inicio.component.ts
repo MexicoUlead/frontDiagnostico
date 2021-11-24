@@ -137,37 +137,11 @@ export class InicioComponent implements OnInit {
 
   sh: any;
   Preguntas: any = preguntas;
-  //Etapa1
-  public politicaSi: boolean = false;
-  public tienePoliticas: string = '';
-  public seguroSi: boolean = false;
-  public tieneSeguro: string = '';
 
   constructor(private fb: FormBuilder, private diagnoServ: ServiceService) { }
 
   ngOnInit(): void {
 
-  }
-
-  //etapa 1
-  radioChange(event: any) {
-    this.tienePoliticas = event.currentTarget.checked;
-
-    if (this.tienePoliticas) {
-      this.politicaSi = true;
-    } else {
-      this.politicaSi = false;
-    }
-  }
-
-  radioChange2(event: any) {
-    this.tieneSeguro = event.currentTarget.checked;
-
-    if (this.tieneSeguro) {
-      this.seguroSi = true;
-    } else {
-      this.seguroSi = false;
-    }
   }
 
   createUser() {
@@ -185,7 +159,6 @@ export class InicioComponent implements OnInit {
 
   }
 
-
   validForm(): boolean {
 
     if (this.registerForm.invalid && this.formSubmit) {
@@ -196,7 +169,6 @@ export class InicioComponent implements OnInit {
 
   }
 
-
   aceptaTermina() {
     //return !this.registerForm.get('').value && this.formSubmit;
   }
@@ -205,21 +177,74 @@ export class InicioComponent implements OnInit {
     console.log("funciona")
   }
 
+  //OCULTAR Y MOSTRAR OPCIONES
+  //Etapa1
+  public politicaSi: boolean = false;
+  public tienePoliticas: string = '';
+  //etapa 1
+  radioChange(event: any) {
+    this.tienePoliticas = event.currentTarget.checked;
+
+    if (this.tienePoliticas) {
+      this.politicaSi = true;
+    } else {
+      this.politicaSi = false;
+    }
+  }
+  public seguroSi: boolean = false;
+  public tieneSeguro: string = '';
+  radioChange2(event: any) {
+    this.tieneSeguro = event.currentTarget.checked;
+
+    if (this.tieneSeguro) {
+      this.seguroSi = true;
+    } else {
+      this.seguroSi = false;
+    }
+  }
+
+  //etapa5
+  public modificacionSi: boolean = false;
+  public tieneModificacion: string = '';
+  modifica(event: any){
+    this.tieneModificacion = event.currentTarget.checked;
+    if (this.tieneModificacion) {
+      this.modificacionSi = true;
+    } else {
+      this.modificacionSi = false;
+    }
+  }
+
+
   //inicio
   public mostrarInicio: boolean = true;
+
   //pasar a etapa 1
   public mostrarEtapa: boolean = false;
-  siguienteEtapa() {
-    this.mostrarInicio = false;
-    this.mostrarEtapa = true;
+  siguienteEtapa(firma: any, autoriza: any) {
+    if (firma.trim().length > 0 && autoriza) {
+      //console.log(firma.trim(), autoriza)
+      this.mostrarInicio = false;
+      this.mostrarEtapa = true;
+    } else {
+      alert("Indicar su firma y marcar autorización");
+    }
+
   }
 
   //pasar a etapa 2
   public mostrarEtapa2: boolean = false;
-  etapa2() {
-    this.mostrarEtapa = false;
-    this.mostrarEtapa2 = true;
+  etapa2(nombreEmpresa: any, antiguedad: any, eTipoSociedad: any) {
+    if (nombreEmpresa.trim().length > 0
+      && antiguedad.trim().length > 0
+      && eTipoSociedad.trim().length > 0) {
+      this.mostrarEtapa = false;
+      this.mostrarEtapa2 = true;
+    } else {
+      alert("Completar todos los campos");
+    }
   }
+
   //pasar a etapa 3
   public mostrarEtapa3: boolean = false;
   etapa3() {
@@ -228,9 +253,15 @@ export class InicioComponent implements OnInit {
   }
   //pasar a etapa 4
   public mostrarEtapa4: boolean = false;
-  etapa4() {
-    this.mostrarEtapa3 = false;
-    this.mostrarEtapa4 = true;
+  etapa4(bRasgos: any, cCapacitacion: any) {
+    if (bRasgos.trim().length > 0
+      && cCapacitacion.trim().length > 0) {
+      this.mostrarEtapa3 = false;
+      this.mostrarEtapa4 = true;
+    } else {
+      alert("Completar todos los campos");
+    }
+
   }
   //pasar a etapa 5
   public mostrarEtapa5: boolean = false;

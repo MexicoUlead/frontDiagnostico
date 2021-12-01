@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ServiceService } from 'src/app/services/service.service';
 //import dign from '../../../';
-
+import Swal from 'sweetalert2';
 
 import preguntas from 'src/assets/json/preguntas.json';
 
@@ -15,6 +15,9 @@ export class InicioComponent implements OnInit {
 
   //  dig: any = dign;
   public formSubmit = false;
+  public file1!: File;
+  public file2!: File;
+
 
   public registerForm = this.fb.group({
     firma: ['', [Validators.required, Validators.minLength(2)]],
@@ -147,17 +150,42 @@ export class InicioComponent implements OnInit {
   createUser() {
     this.formSubmit = true;
 
+    let id: string = '';
+
     if (this.registerForm.invalid) {
       console.log("no se completaron los datos correctamente")
-    };
+      Swal.fire('Error', 'no se completaron los datos correctamente', 'error')
+    }
+    else {
+      this.diagnoServ.crearDiagnostico(this.registerForm.value).subscribe((resp: any) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'diagnostico creado',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        console.log(resp);
+        id = resp.diagnostico._id
+        console.log(id);
+        this.diagnoServ.subirFile(this.file1, id, 'file1');
+        this.diagnoServ.subirFile(this.file2, id, 'file2');
+      }, (err) => { Swal.fire('Error', err.error.msg, 'error') });
 
-    this.diagnoServ.crearDiagnostico(this.registerForm.value).subscribe(resp => {
-      console.log('diagnostico creado');
-      console.log(resp);
-    }, (err) => console.warn(err.error));
-
+    }
 
   }
+
+  fileUp(event: any) {
+    this.file1 = event.target.files[0]
+    console.log(this.file1);
+  }
+
+  fileUp2(event: any) {
+    this.file2 = event.target.files[0]
+    console.log(this.file1);
+  }
+
 
   validForm(): boolean {
 
@@ -206,7 +234,7 @@ export class InicioComponent implements OnInit {
   //etapa5
   public modificacionSi: boolean = false;
   public tieneModificacion: string = '';
-  modifica(event: any){
+  modifica(event: any) {
     this.tieneModificacion = event.currentTarget.checked;
     if (this.tieneModificacion) {
       this.modificacionSi = true;

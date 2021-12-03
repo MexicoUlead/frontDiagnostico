@@ -11,6 +11,7 @@ import preguntas from 'src/assets/json/preguntas.json';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss']
 })
+
 export class InicioComponent implements OnInit {
 
   //  dig: any = dign;
@@ -186,6 +187,10 @@ export class InicioComponent implements OnInit {
     console.log(this.file1);
   }
 
+  fileOrganigrama(event: any) {
+    // this.file2 = event.target.files[0]
+    // console.log(this.file1);
+  }
 
   validForm(): boolean {
 
@@ -326,5 +331,56 @@ export class InicioComponent implements OnInit {
   etapa10() {
     this.mostrarEtapa9 = false;
     this.mostrarEtapa10 = true;
+  }
+
+  //regresar a inicio
+  regresarInicio() {
+    this.mostrarInicio = true;
+    this.mostrarEtapa = false;
+  }
+  //regresar a etapa 1
+  regresarEtapa1() {
+    this.mostrarEtapa = true;
+    this.mostrarEtapa2 = false;
+  }
+  //regresar a etapa 2
+  regresarEtapa2() {
+    this.mostrarEtapa2 = true;
+    this.mostrarEtapa3 = false;
+  }
+  //regresar a etapa 3
+  regresarEtapa3() {
+    this.mostrarEtapa3 = true;
+    this.mostrarEtapa4 = false;
+  }
+  //regresar a etapa 4
+  regresarEtapa4() {
+    this.mostrarEtapa4 = true;
+    this.mostrarEtapa5 = false;
+  }
+  //regresar a etapa 5
+  regresarEtapa5() {
+    this.mostrarEtapa5 = true;
+    this.mostrarEtapa6 = false;
+  }
+  //regresar a etapa 6
+  regresarEtapa6() {
+    this.mostrarEtapa6 = true;
+    this.mostrarEtapa7 = false;
+  }
+  //regresar a etapa 7
+  regresarEtapa7() {
+    this.mostrarEtapa7 = true;
+    this.mostrarEtapa8 = false;
+  }
+  //regresar a etapa 8
+  regresarEtapa8() {
+    this.mostrarEtapa8 = true;
+    this.mostrarEtapa9 = false;
+  }
+  //regresar a etapa 9
+  regresarEtapa9() {
+    this.mostrarEtapa9 = true;
+    this.mostrarEtapa10 = false;
   }
 }

@@ -7,12 +7,12 @@
       <p>
         El siguiente diagnóstico ha sido elaborado para conocer la situación actual de su empresa en materia
         de competitividad, y en particular, los retos específicos que están impidiendo el crecimiento-posicionamiento
-        local e internacional. <br>
-        EL diagnóstico empresarial enfocado al desarrollo de la competitividad del sector belleza y
+        local e internacional. <br><br>
+        El diagnóstico empresarial enfocado al desarrollo de la competitividad del sector belleza y
         cuidado personal aquí adjunto, permitirá encontrar la raíz del problema, lo que facilitará la puesta
         en marcha de herramientas con base en la metodología ABP® cuyo conocimiento, uso e
         implementación permitirán que la corporación se desarrollé de manera óptima, para así tener
-        mayores posibilidades de acceder a mercados globales.<br>
+        mayores posibilidades de acceder a mercados globales.<br><br>
         El cuestionario está estructurado para proyectar información estratégica sobre el funcionamiento
         de cada área estructural de su organización; por lo que se le solicita responder de la forma más
         detallada y clara posible para poder entonces desarrollar un programa de capacitación a su medida.
@@ -33,7 +33,7 @@
       </p>
 
       <div class="form__container">
-        <label class="form__label">Firma (nombre)</label>
+        <label class="form__label">Firma (nombre)*</label>
         <input type="text" #firma formControlName="firma" class="form__input" maxlength="50">
       </div>
 
@@ -63,7 +63,7 @@
     <!-- #input nombre de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa1.a}}</label>
-      <input type="text" #nombreEmpresa formControlName="nombreEmpresa" class="form__input">
+      <input type="text" #nombreEmpresa formControlName="nombreEmpresa" class="form__input" maxlength="50">
     </div>
 
     <div class="row">
@@ -79,7 +79,7 @@
         <div class="form__container">
           <label class="form__label">{{Preguntas.etapa1.c.pregunta}}</label>
           <select #typeOrganizacion formControlName="typeOrganizacion" class="form__select">
-            <option value="Familiar" d>Familiar (todos los socios son parientes) </option>
+            <option value="Familiar" selected>Familiar (todos los socios son parientes) </option>
             <option value="No Familiar">No familia (ninguno de los socios es pariente)</option>
             <option value="Mixta">Mixta (cuenta con socios familiares y no familiares)</option>
           </select>
@@ -93,17 +93,10 @@
     <div class="row">
       <div class="col-10">
         <div class="form__container">
-          <label class="form__label">Nombre y Puesto</label>
-          <input type="text" id="dSocio1" formControlName="dSocio1" class="form__input">
+          <label class="form__label">Nombre y Puesto*</label>
+          <input type="text" maxlength="50" #dSocio1 formControlName="dSocio1" class="form__input">
         </div>
       </div>
-
-      <!-- <div class="col-5">
-        <div class="form__container">
-          <label class="form__label">Puesto</label>
-          <input type="text" id="puesto1" class="form__input">
-        </div>
-      </div> -->
 
       <div class="col-2">
         <div class="form-check">
@@ -118,17 +111,10 @@
     <div class="row">
       <div class="col-10">
         <div class="form__container">
-          <label class="form__label">Nombre y Puesto</label>
-          <input type="text" id="dSocio2" formControlName="dSocio2" class="form__input" autocomplete="off">
+          <label class="form__label">Nombre y Puesto*</label>
+          <input type="text" maxlength="50" #dSocio2 formControlName="dSocio2" class="form__input" autocomplete="off">
         </div>
       </div>
-
-      <!-- <div class="col-5">
-        <div class="form__container">
-          <label class="form__label">Puesto</label>
-          <input type="text" id="puesto2" class="form__input" autocomplete="off">
-        </div>
-      </div> -->
 
       <div class="col-2">
         <div class="form-check">
@@ -143,17 +129,10 @@
     <div class="row">
       <div class="col-10">
         <div class="form__container">
-          <label class="form__label">Nombre y Puesto</label>
-          <input type="text" id="dSocio3" formControlName="dSocio3" class="form__input">
+          <label class="form__label">Nombre y Puesto*</label>
+          <input type="text" maxlength="50" #dSocio3 formControlName="dSocio3" class="form__input">
         </div>
       </div>
-
-      <!-- <div class="col-5">
-        <div class="form__container">
-          <label class="form__label">Puesto</label>
-          <input type="text" id="puesto3" class="form__input">
-        </div>
-      </div> -->
 
       <div class="col-2">
         <div class="form-check">
@@ -168,16 +147,15 @@
     <!-- #tipo de sociedad legal que rige en empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa1.e}}</label>
-      <input type="text" #eTipoSociedad formControlName="eTipoSociedad" class="form__input" autocomplete="off">
+      <input type="text" #eTipoSociedad formControlName="eTipoSociedad" class="form__input" maxlength="50">
     </div>
 
     <!-- #politicas y procedimientos de empresa -->
     <p class="mb-4 form__label">{{Preguntas.etapa1.f}}</p>
 
     <div class="form__container">
-
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="si" id="fPoliticas" formControlName="fPoliticas"
+        <input class="form-check-input" type="checkbox" value="si" #fPoliticas formControlName="fPoliticas"
           (change)="radioChange($event)">
         <label class="form-check-label" for="fPoliticas">
           Si
@@ -188,17 +166,16 @@
     <!-- #la respuesta fue SI-->
     <div class="form__container" *ngIf="politicaSi">
       <label class="form__label">{{Preguntas.etapa1.g}}</label>
-      <textarea id="gPoliticasSi" formControlName="gPoliticasSi" class="form__input form_textarea"></textarea>
+      <textarea #gPoliticasSi formControlName="gPoliticasSi" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <!-- #cuenta con seguro de empresa -->
     <p class="mb-4 form__label">{{Preguntas.etapa1.h}}</p>
 
     <div class="form__container">
-
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="si" id="fSeguro" name="fSeguro"
-          (change)="radioChange2($event)">
+        <input class="form-check-input" type="checkbox" value="si" #fSeguro name="fSeguro" (change)="radioChange2($event)">
         <label class="form-check-label" for="fSeguro">
           Si
         </label>
@@ -209,19 +186,23 @@
     <!-- #la respuesta fue SI-->
     <div class="form__container" *ngIf="seguroSi">
       <label class="form__label">De qué tipo:</label>
-      <textarea formControlName="hSeguroEmpresarial" id="hSeguroEmpresarial"
-        class="form__input form_textarea"></textarea>
+      <textarea formControlName="hSeguroEmpresarial" #hSeguroEmpresarial class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa1.i}}</label>
-      <textarea id="iOrganigrama" formControlName="iOrganigrama" class="form__input form_textarea"></textarea>
+      <input type="file" class="form__input" #iOrganigrama formControlName="iOrganigrama" (change)="fileOrganigrama($event)">
+      <!-- <textarea id="iOrganigrama" formControlName="iOrganigrama" class="form__input form_textarea"></textarea> -->
     </div>
 
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
-      <button type="button" (click)="etapa2(nombreEmpresa.value, antiguedad.value, eTipoSociedad.value)">Siguiente</button>
+      <button type="button" (click)="regresarInicio()">Anterior</button>
+
+      <button type="button"
+        (click)="etapa2(nombreEmpresa.value, antiguedad.value, eTipoSociedad.value)">Siguiente</button>
     </div>
   </div>
 
@@ -238,31 +219,31 @@
     <!-- #input vision de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.a}}</label>
-      <textarea id="aVision" formControlName="aVision" class="form__input form_textarea"></textarea>
+      <textarea #aVision formControlName="aVision" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- #input mision de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.b}}</label>
-      <textarea id="bMision" formControlName="bMision" class="form__input form_textarea"></textarea>
+      <textarea #bMision formControlName="bMision" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- #input creencias de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.c}}</label>
-      <textarea id="cCreencias" formControlName="cCreencias" class="form__input form_textarea"></textarea>
+      <textarea #cCreencias formControlName="cCreencias" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- #input valores de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.d}}</label>
-      <textarea id="dValores" formControlName="dValores" class="form__input form_textarea"></textarea>
+      <textarea #dValores formControlName="dValores" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- #input principios de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.e}}</label>
-      <textarea id="ePrincipios" formControlName="ePrincipios" class="form__input form_textarea"></textarea>
+      <textarea #ePrincipios formControlName="ePrincipios" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <div class="etapa__info">
@@ -306,25 +287,27 @@
     <!-- #input tipo liderazgo de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.f_choice}}</label>
-      <textarea id="fTipoDeLiderazgo" formControlName="fTipoDeLiderazgo" class="form__input form_textarea"></textarea>
+      <textarea #fTipoDeLiderazgo formControlName="fTipoDeLiderazgo" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <!-- #input equipo de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.g}}</label>
-      <textarea id="gEquipoDirectivo" formControlName="gEquipoDirectivo" class="form__input form_textarea"></textarea>
+      <textarea #gEquipoDirectivo formControlName="gEquipoDirectivo" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <!-- #input logros de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.h}}</label>
-      <textarea id="hLogros" formControlName="hLogros" class="form__input form_textarea"></textarea>
+      <textarea #hLogros formControlName="hLogros" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- #input proyectos de empresa -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa2.i}}</label>
-      <textarea id="iProyectos" formControlName="iProyectos" class="form__input form_textarea"></textarea>
+      <textarea #iProyectos formControlName="iProyectos" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- fortalezas y debilidades -->
@@ -336,15 +319,15 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
-            <textarea id="fortalezasDirectivo" formControlName="fortalezasDirectivo"
-              class="form__input form_textarea"></textarea>
+            <textarea #fortalezasDirectivo formControlName="fortalezasDirectivo" class="form__input form_textarea"
+              maxlength="250"></textarea>
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
-            <textarea id="debilidadesDirectivo" formControlName="debilidadesDirectivo"
-              class="form__input form_textarea"></textarea>
+            <textarea #debilidadesDirectivo formControlName="debilidadesDirectivo" class="form__input form_textarea"
+              maxlength="250"></textarea>
           </div>
         </div>
       </div>
@@ -353,6 +336,8 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa1()">Anterior</button>
+
       <button type="button" (click)="etapa3()">Siguiente</button>
     </div>
   </div>
@@ -376,8 +361,8 @@
       <p class="form__label">{{Preguntas.etapa3.a}}</p>
 
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" formControlName="aProgramaCrecimiento"
-          id="aProgramaCrecimiento" value="aProgramaCrecimiento">
+        <input class="form-check-input" type="checkbox" formControlName="aProgramaCrecimiento" id="aProgramaCrecimiento"
+          value="aProgramaCrecimiento">
         <label class="form-check-label" for="aProgramaCrecimiento">
           Si
         </label>
@@ -388,19 +373,21 @@
     <!-- #rasgos -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.b}}</label>
-      <textarea #bRasgos formControlName="bRasgos" class="form__input form_textarea"></textarea>
+      <textarea #bRasgos formControlName="bRasgos" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- #cCapacitacion -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.c}}</label>
-      <textarea #cCapacitacion formControlName="cCapacitacion" class="form__input form_textarea"></textarea>
+      <textarea #cCapacitacion formControlName="cCapacitacion" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <!-- #dPlanDeVida -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.d}}</label>
-      <textarea id="dPlanDeVida" formControlName="dPlanDeVida" class="form__input form_textarea"></textarea>
+      <textarea id="dPlanDeVida" formControlName="dPlanDeVida" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <!-- si/no -->
@@ -429,20 +416,20 @@
 
       <div>
         <p>Por qué:</p>
-        <textarea id="ePorque" formControlName="ePorque" class="form__input form_textarea"></textarea>
+        <textarea id="ePorque" formControlName="ePorque" class="form__input form_textarea" maxlength="250"></textarea>
       </div>
     </div>
 
     <!-- #num empleadas -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.f}}</label>
-      <input type="number" id="fMujeres" formControlName="fMujeres" class="form__input">
+      <input type="number" id="fMujeres" formControlName="fMujeres" class="form__input" maxlength="3">
     </div>
 
     <!-- #num empleados -->
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa3.g}}</label>
-      <input type="number" id="gHombres" formControlName="gHombres" class="form__input">
+      <input type="number" id="gHombres" formControlName="gHombres" class="form__input" maxlength="3">
     </div>
 
     <div class="form__container">
@@ -456,7 +443,7 @@
       </div>
 
       <p>¿Por qué? o ¿Ya lo tiene?</p>
-      <textarea id="hReactivo" formControlName="hReactivo" class="form__input form_textarea"></textarea>
+      <textarea id="hReactivo" formControlName="hReactivo" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- fortalezas y debilidades -->
@@ -468,15 +455,15 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
-            <textarea id="fortalezasGeneral" formControlName="fortalezasGeneral"
-              class="form__input form_textarea"></textarea>
+            <textarea id="fortalezasGeneral" formControlName="fortalezasGeneral" class="form__input form_textarea"
+              maxlength="250"></textarea>
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
-            <textarea id="debilidadesGeneral" formControlName="debilidadesGeneral"
-              class="form__input form_textarea"></textarea>
+            <textarea id="debilidadesGeneral" formControlName="debilidadesGeneral" class="form__input form_textarea"
+              maxlength="250"></textarea>
           </div>
         </div>
       </div>
@@ -484,6 +471,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa2()">Anterior</button>
       <button type="button" (click)="etapa4(bRasgos.value, cCapacitacion.value)">Siguiente</button>
     </div>
   </div>
@@ -501,7 +489,8 @@
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.a}}</label>
-      <textarea id="aObjetivos" formControlName="aObjetivos" class="form__input form_textarea"></textarea>
+      <textarea id="aObjetivos" formControlName="aObjetivos" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <!-- #explique sobre equipo -->
@@ -519,23 +508,26 @@
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.b1}}</label>
-      <textarea id="bFodaPlanea" formControlName="bFodaPlanea" class="form__input form_textarea"></textarea>
+      <textarea id="bFodaPlanea" formControlName="bFodaPlanea" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.b2}}</label>
-      <textarea id="bFodaOportunidades" formControlName="bFodaOportunidades"
-        class="form__input form_textarea"></textarea>
+      <textarea id="bFodaOportunidades" formControlName="bFodaOportunidades" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.b3}}</label>
-      <textarea id="bFodaAmenazas" formControlName="bFodaAmenazas" class="form__input form_textarea"></textarea>
+      <textarea id="bFodaAmenazas" formControlName="bFodaAmenazas" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.b4}}</label>
-      <textarea id="bFodaEstrategia" formControlName="bFodaEstrategia" class="form__input form_textarea"></textarea>
+      <textarea id="bFodaEstrategia" formControlName="bFodaEstrategia" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="etapa__info">
@@ -546,17 +538,19 @@
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.c.p3}}</label>
-      <textarea id="cControlGestion" formControlName="cControlGestion" class="form__input form_textarea"></textarea>
+      <textarea id="cControlGestion" formControlName="cControlGestion" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa4.c2}}</label>
-      <textarea id="cEsquema" formControlName="cEsquema" class="form__input form_textarea"></textarea>
+      <textarea id="cEsquema" formControlName="cEsquema" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa3()">Anterior</button>
       <button type="button" (click)="etapa5()">Siguiente</button>
     </div>
   </div>
@@ -616,8 +610,8 @@
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa5.e}}</label>
-      <textarea id="eCapacidadProductiva" formControlName="eCapacidadProductiva"
-        class="form__input form_textarea"></textarea>
+      <textarea id="eCapacidadProductiva" formControlName="eCapacidadProductiva" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -634,8 +628,8 @@
 
     <div class="form__container" *ngIf="modificacionSi">
       <label class="form__label">{{Preguntas.etapa5.g}}</label>
-      <textarea id="gPorqueModificacion" formControlName="gPorqueModificacion"
-        class="form__input form_textarea"></textarea>
+      <textarea id="gPorqueModificacion" formControlName="gPorqueModificacion" class="form__input form_textarea"
+        maxlength="250"></textarea>
     </div>
 
 
@@ -751,13 +745,15 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
-            <textarea id="mFortalezas" formControlName="mFortalezas" class="form__input form_textarea"></textarea>
+            <textarea id="mFortalezas" formControlName="mFortalezas" class="form__input form_textarea"
+              maxlength="250"></textarea>
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
-            <textarea id="mDebilidades" formControlName="mDebilidades" class="form__input form_textarea"></textarea>
+            <textarea id="mDebilidades" formControlName="mDebilidades" class="form__input form_textarea"
+              maxlength="250"></textarea>
           </div>
         </div>
       </div>
@@ -766,6 +762,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa4()">Anterior</button>
       <button type="button" (click)="etapa6()">Siguiente</button>
     </div>
   </div>
@@ -792,22 +789,22 @@
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.b}}</label>
-      <textarea formControlName="bParticipacion" class="form__input form_textarea"></textarea>
+      <label class="form__label">{{Preguntas.etapa6.b}}</label>
+      <textarea formControlName="bParticipacion" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.c}}</label>
+      <label class="form__label">{{Preguntas.etapa6.c}}</label>
       <input type="number" formControlName="cLineasProd" class="form__input" autocomplete="off">
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.d}}</label>
+      <label class="form__label">{{Preguntas.etapa6.d}}</label>
       <input type="number" formControlName="dProdProm" class="form__input" autocomplete="off">
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.e}}</label>
+      <label class="form__label">{{Preguntas.etapa6.e}}</label>
       <input type="number" formControlName="eRegMar" class="form__input" autocomplete="off">
     </div>
 
@@ -826,17 +823,18 @@
         </label>
       </div>
 
-      <textarea formControlName="fProm" class="form__input form_textarea" placeholder="¿Por qué?"></textarea>
+      <textarea formControlName="fProm" class="form__input form_textarea" placeholder="¿Por qué?"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.g}}</label>
-      <textarea formControlName="gCadenaDis" class="form__input form_textarea"></textarea>
+      <label class="form__label">{{Preguntas.etapa6.g}}</label>
+      <textarea formControlName="gCadenaDis" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.h}}</label>
-      <textarea formControlName="hEscala" class="form__input form_textarea"></textarea>
+      <label class="form__label">{{Preguntas.etapa6.h}}</label>
+      <textarea formControlName="hEscala" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -885,7 +883,7 @@
         </div>
       </div> -->
 
-      <textarea formControlName="iTipoPublic" class="form__input form_textarea"></textarea>
+      <textarea formControlName="iTipoPublic" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -912,8 +910,8 @@
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa6.k}}</label>
-      <textarea formControlName="kTipoDeCapac" class="form__input form_textarea"></textarea>
+      <label class="form__label">{{Preguntas.etapa6.k}}</label>
+      <textarea formControlName="kTipoDeCapac" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <!-- fortalezas y debilidades -->
@@ -925,13 +923,13 @@
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.fortalezas}}</p>
-            <textarea formControlName="lFortalezas" class="form__input form_textarea"></textarea>
+            <textarea formControlName="lFortalezas" class="form__input form_textarea" maxlength="250"></textarea>
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6">
           <div>
             <p class="text">{{Preguntas.etapa3.debilidades}}</p>
-            <textarea formControlName="lDebilidades" class="form__input form_textarea"></textarea>
+            <textarea formControlName="lDebilidades" class="form__input form_textarea" maxlength="250"></textarea>
           </div>
         </div>
       </div>
@@ -939,6 +937,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa5()">Anterior</button>
       <button type="button" (click)="etapa7()">Siguiente</button>
     </div>
   </div>
@@ -954,7 +953,7 @@
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa7.a}}</label>
+      <label class="form__label">{{Preguntas.etapa7.a}}</label>
       <input type="number" formControlName="aPatentes" class="form__input" autocomplete="off">
     </div>
 
@@ -1004,7 +1003,7 @@
         </label>
       </div>
 
-      <textarea class="form__input form_textarea" placeholder="¿Cuál?"></textarea>
+      <textarea class="form__input form_textarea" placeholder="¿Cuál?" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -1016,7 +1015,7 @@
         </label>
       </div>
 
-      <textarea class="form__input form_textarea" placeholder="Por qué?"></textarea>
+      <textarea class="form__input form_textarea" placeholder="Por qué?" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -1032,6 +1031,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa6()">Anterior</button>
       <button type="button" (click)="etapa8()">Siguiente</button>
     </div>
   </div>
@@ -1048,12 +1048,11 @@
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa8.a}}</label>
-      <textarea formControlName="aPrincObj" class="form__input form_textarea"></textarea>
+      <textarea formControlName="aPrincObj" class="form__input form_textarea" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa8.b}}</label>
-
       <input type="file" formControlName="file1" class="form__input" (change)="fileUp($event)">
     </div>
 
@@ -1064,7 +1063,6 @@
 
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa8.d}}</p>
-
       <div class="subInput">
         <label for="">Producción:</label>
         <input type="text" formControlName="dPresupuesto" class="form__input">
@@ -1140,6 +1138,7 @@
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa7()">Anterior</button>
       <button type="button" (click)="etapa9()">Siguiente</button>
     </div>
   </div>
@@ -1185,7 +1184,8 @@
         </label>
       </div>
 
-      <textarea class="form__input form_textarea" formControlName="aCadenaValorPor" placeholder="Por qué?"></textarea>
+      <textarea class="form__input form_textarea" formControlName="aCadenaValorPor" placeholder="Por qué?"
+        maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -1197,19 +1197,19 @@
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa9.c}}</label>
 
-      <textarea class="form__input form_textarea" formControlName="cVentajaComp"></textarea>
+      <textarea class="form__input form_textarea" formControlName="cVentajaComp" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
       <label class="form__label">{{Preguntas.etapa9.d}}</label>
 
-      <textarea class="form__input form_textarea" formControlName="dConsiAli"></textarea>
+      <textarea class="form__input form_textarea" formControlName="dConsiAli" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa9.e}}</label>
+      <label class="form__label">{{Preguntas.etapa9.e}}</label>
 
-      <textarea class="form__input form_textarea" formControlName="eConoPort"></textarea>
+      <textarea class="form__input form_textarea" formControlName="eConoPort" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -1245,11 +1245,11 @@
     <div class="form__container">
       <p class="form__label">{{Preguntas.etapa9.g}}</p>
 
-      <textarea class="form__input form_textarea" formControlName="gCertiType"></textarea>
+      <textarea class="form__input form_textarea" formControlName="gCertiType" maxlength="250"></textarea>
 
       <p class="form__label">Indique cuales</p>
 
-      <textarea class="form__input form_textarea" formControlName="gCertiTypeCuales"></textarea>
+      <textarea class="form__input form_textarea" formControlName="gCertiTypeCuales" maxlength="250"></textarea>
     </div>
 
     <div class="form__container">
@@ -1257,64 +1257,65 @@
 
       <div>
         <label>{{Preguntas.etapa9.h1}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoceA"></textarea>
+        <textarea class="form__input form_textarea" formControlName="hConoceA" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h2}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoceB"></textarea>
+        <label>{{Preguntas.etapa9.h2}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceB" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h3}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoceC"></textarea>
+        <label>{{Preguntas.etapa9.h3}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceC" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h4}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoceD"></textarea>
+        <label>{{Preguntas.etapa9.h4}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoceD" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h5}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoce5"></textarea>
+        <label>{{Preguntas.etapa9.h5}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce5" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h6}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoce6"></textarea>
+        <label>{{Preguntas.etapa9.h6}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce6" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h7}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoce7"></textarea>
+        <label>{{Preguntas.etapa9.h7}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce7" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h8}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoce8"></textarea>
+        <label>{{Preguntas.etapa9.h8}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce8" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h9}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoce9"></textarea>
+        <label>{{Preguntas.etapa9.h9}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce9" maxlength="250"></textarea>
       </div>
 
       <div>
-        <label for="nombreEmpresa">{{Preguntas.etapa9.h10}}</label>
-        <textarea class="form__input form_textarea" formControlName="hConoce10"></textarea>
+        <label>{{Preguntas.etapa9.h10}}</label>
+        <textarea class="form__input form_textarea" formControlName="hConoce10" maxlength="250"></textarea>
       </div>
     </div>
 
     <div class="form__container">
-      <label for="nombreEmpresa" class="form__label">{{Preguntas.etapa9.i}}</label>
+      <label class="form__label">{{Preguntas.etapa9.i}}</label>
 
-      <textarea class="form__input form_textarea" formControlName="iComentariosAdi"></textarea>
+      <textarea class="form__input form_textarea" formControlName="iComentariosAdi" maxlength="250"></textarea>
     </div>
 
 
     <!-- boton de siguiente paso -->
     <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa8()">Anterior</button>
       <button type="button" (click)="etapa10()">Siguiente</button>
     </div>
   </div>
@@ -1344,6 +1345,9 @@
       </ul>
 
       <span>{{Preguntas.etapa10.agradecimiento}}</span>
+    </div>
+    <div class="pasarEtapa">
+      <button type="button" (click)="regresarEtapa9()">Anterior</button>
     </div>
   </div>
 

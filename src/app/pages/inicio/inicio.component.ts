@@ -25,14 +25,14 @@ export class InicioComponent implements OnInit {
     nombreEmpresa: ['', [Validators.required, Validators.minLength(2)]],
     autoriza: ['', [Validators.required, Validators.minLength(2)]],
     antiguedad: ['', [Validators.required, Validators.minLength(2)]],
-    typeOrganizacion: ['', [Validators.required, Validators.minLength(2)]],
+    typeOrganizacion: ['familiar', [Validators.required, Validators.minLength(2)]],
     dSocio1: ['', [Validators.required, Validators.minLength(2)]],
     dSocio2: ['', [Validators.required, Validators.minLength(2)]],
     dSocio3: ['', [Validators.required, Validators.minLength(2)]],
     eTipoSociedad: ['', [Validators.required, Validators.minLength(2)]],
-    fPoliticas: ['', [Validators.required, Validators.minLength(2)]],
-    gPoliticasSi: ['', [Validators.required, Validators.minLength(2)]],
-    hSeguroEmpresarial: ['', [Validators.required, Validators.minLength(2)]],
+    fPoliticas: ['', [Validators.minLength(2)]],
+    gPoliticasSi: ['', [Validators.minLength(2)]],
+    hSeguroEmpresarial: ['', [Validators.minLength(2)]],
     iOrganigrama: ['', [Validators.required, Validators.minLength(2)]],
     // etapa2
     aVision: ['', [Validators.required, Validators.minLength(2)]],
@@ -47,28 +47,28 @@ export class InicioComponent implements OnInit {
     fortalezasDirectivo: ['', [Validators.required, Validators.minLength(2)]],
     debilidadesDirectivo: ['', [Validators.required, Validators.minLength(2)]],
     // Etapa3
-    aProgramaCrecimiento: ['', [Validators.required, Validators.minLength(2)]],
+    aProgramaCrecimiento: [''],
     bRasgos: ['', [Validators.required, Validators.minLength(2)]],
     cCapacitacion: ['', [Validators.required, Validators.minLength(2)]],
     dPlanDeVida: ['', [Validators.required, Validators.minLength(2)]],
-    eInduccion: ['', [Validators.required, Validators.minLength(2)]],
-    ePorque: ['', [Validators.required, Validators.minLength(2)]],
+    eInduccion: [''],
+    ePorque: ['', [Validators.required, Validators.minLength(1)]],
     fMujeres: ['', [Validators.required, Validators.minLength(1)]],
     gHombres: ['', [Validators.required, Validators.minLength(1)]],
-    hReactivo: ['', [Validators.required, Validators.minLength(2)]],
+    hReactivo: [''],
     fortalezasGeneral: ['', [Validators.required, Validators.minLength(2)]],
     debilidadesGeneral: ['', [Validators.required, Validators.minLength(2)]],
     // Etapa4
     aObjetivos: ['', [Validators.required, Validators.minLength(2)]],
-    bFodaTime: ['', [Validators.required, Validators.minLength(2)]],
+    bFodaTime: ['nunca', [Validators.required, Validators.minLength(2)]],
     bFodaPlanea: ['', [Validators.required, Validators.minLength(2)]],
     bFodaOportunidades: ['', [Validators.required, Validators.minLength(2)]],
     bFodaAmenazas: ['', [Validators.required, Validators.minLength(2)]],
     bFodaEstrategia: ['', [Validators.required, Validators.minLength(2)]],
     cControlGestion: ['', [Validators.required, Validators.minLength(2)]],
-    cEsquema: ['', [Validators.required, Validators.minLength(2)]],
+    cEsquema: ['', [Validators.minLength(2)]],
     // Etapa5
-    aTipoEmpresa: ['', [Validators.required, Validators.minLength(2)]],
+    aTipoEmpresa: ['maquilador', [Validators.required, Validators.minLength(2)]],
     bPlantas: [''],
     bTamaño: [''],
     cLineasPro: [''],
@@ -84,7 +84,7 @@ export class InicioComponent implements OnInit {
     mFortalezas: [''],
     mDebilidades: [''],
     // Etapa6
-    aMercadotecnica: ['', [Validators.required, Validators.minLength(2)]],
+    aMercadotecnica: [''],
     bParticipacion: ['', [Validators.required, Validators.minLength(2)]],
     cLineasProd: ['', [Validators.required, Validators.minLength(2)]],
     dProdProm: ['', [Validators.required, Validators.minLength(2)]],
@@ -93,37 +93,37 @@ export class InicioComponent implements OnInit {
     gCadenaDis: ['', [Validators.required, Validators.minLength(2)]],
     hEscala: ['', [Validators.required, Validators.minLength(2)]],
     iTipoPublic: ['', [Validators.required, Validators.minLength(2)]],
-    jFuerzaVen: ['', [Validators.required, Validators.minLength(2)]],
+    jFuerzaVen: [''],
     kTipoDeCapac: ['', [Validators.required, Validators.minLength(2)]],
     lFortalezas: ['', [Validators.required, Validators.minLength(2)]],
     lDebilidades: ['', [Validators.required, Validators.minLength(2)]],
     // etapa7
     aPatentes: ['', [Validators.required, Validators.minLength(2)]],
-    bInvProyect: ['', [Validators.required, Validators.minLength(2)]],
-    cInvUniv: ['', [Validators.required, Validators.minLength(2)]],
-    dProdCal: ['', [Validators.required, Validators.minLength(2)]],
-    eProveeduria: ['', [Validators.required, Validators.minLength(2)]],
+    bInvProyect: [''],
+    cInvUniv: [''],
+    dProdCal: [''],
+    eProveeduria: [''],
     //Etapa8
     aPrincObj: ['', [Validators.required, Validators.minLength(2)]],
     // b pendiente
     cPersonaFina: ['', [Validators.required, Validators.minLength(2)]],
-    dPresupuesto: ['', [Validators.required, Validators.minLength(2)]],
+    dPresupuesto: [''],
     eEndeudamiento: ['', [Validators.required, Validators.minLength(2)]],
-    fVentasCredito: ['', [Validators.required, Validators.minLength(2)]],
+    fVentasCredito: [''],
     gApalancamiento: ['', [Validators.required, Validators.minLength(2)]],
-    hMinImpA: ['', [Validators.required, Validators.minLength(2)]],
-    hMinImpB: ['', [Validators.required, Validators.minLength(2)]],
-    hMinImpC: ['', [Validators.required, Validators.minLength(2)]],
+    hMinImpA: [''],
+    hMinImpB: [''],
+    hMinImpC: [''],
     // Etapa9
-    aCadenaValor: ['', [Validators.required, Validators.minLength(2)]],
-    aCadenaValorPor: ['', [Validators.required, Validators.minLength(2)]],
+    aCadenaValor: [''],
+    aCadenaValorPor: [''],
     // b pendiente
     cVentajaComp: ['', [Validators.required, Validators.minLength(2)]],
     dConsiAli: ['', [Validators.required, Validators.minLength(2)]],
     eConoPort: ['', [Validators.required, Validators.minLength(2)]],
-    fCertificaciones: ['', [Validators.required, Validators.minLength(2)]],
-    gCertiType: ['', [Validators.required, Validators.minLength(2)]],
-    gCertiTypeCuales: ['', [Validators.required, Validators.minLength(2)]],
+    fCertificaciones: [''],
+    gCertiType: [''],
+    gCertiTypeCuales: [''],
     hConoceA: ['', [Validators.required, Validators.minLength(2)]],
     hConoceB: ['', [Validators.required, Validators.minLength(2)]],
     hConoceC: ['', [Validators.required, Validators.minLength(2)]],
@@ -134,9 +134,9 @@ export class InicioComponent implements OnInit {
     hConoce8: ['', [Validators.required, Validators.minLength(2)]],
     hConoce9: ['', [Validators.required, Validators.minLength(2)]],
     hConoce10: ['', [Validators.required, Validators.minLength(2)]],
-    iComentariosAdi: ['', [Validators.required, Validators.minLength(2)]],
-    file1: ['', Validators.required],
-    file2: ['', Validators.required]
+    iComentariosAdi: [''],
+    file1: [''],
+    file2: ['']
   });
 
   sh: any;
@@ -179,12 +179,12 @@ export class InicioComponent implements OnInit {
 
   fileUp(event: any) {
     this.file1 = event.target.files[0]
-    console.log(this.file1);
+    console.log(this.file1.name);
   }
 
   fileUp2(event: any) {
     this.file2 = event.target.files[0]
-    console.log(this.file1);
+    console.log(this.file2.name);
   }
 
   fileOrganigrama(event: any) {

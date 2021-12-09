@@ -117,7 +117,6 @@ export class InicioComponent implements OnInit {
     // Etapa9
     aCadenaValor: [''],
     aCadenaValorPor: [''],
-    // b pendiente
     cVentajaComp: ['', [Validators.required, Validators.minLength(2)]],
     dConsiAli: ['', [Validators.required, Validators.minLength(2)]],
     eConoPort: ['', [Validators.required, Validators.minLength(2)]],

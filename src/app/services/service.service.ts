@@ -58,5 +58,10 @@ export class ServiceService {
 
   }
 
+
+  fileReturn(file: any) {
+    const url = `${baseUrl}/upload/${file}`;
+    //    return this.http.get
+  }
 }
 

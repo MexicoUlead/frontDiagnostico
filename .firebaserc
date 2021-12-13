@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "firestore-dianostico"
-  }
+    "default": "diagnosticomex-b4892",
+    "diagnostico": "diagnosticomex-b4892"
+  },
+  "targets": {}
 }

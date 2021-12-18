@@ -260,77 +260,265 @@ export class InicioComponent implements OnInit {
       this.mostrarInicio = false;
       this.mostrarEtapa = true;
     } else {
-      alert("Indicar su firma y marcar autorización");
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Indicar su firma y marcar autorización',
+      });
+      //alert("Indicar su firma y marcar autorización");
     }
 
   }
 
   //pasar a etapa 2
   public mostrarEtapa2: boolean = false;
-  etapa2(nombreEmpresa: any, antiguedad: any, eTipoSociedad: any) {
+  etapa2(nombreEmpresa: any,
+    antiguedad: any,
+    dSocio1: any,
+    dSocio2: any,
+    dSocio3: any,
+    eTipoSociedad: any) {
     if (nombreEmpresa.trim().length > 0
       && antiguedad.trim().length > 0
-      && eTipoSociedad.trim().length > 0) {
+      && eTipoSociedad.trim().length > 0
+      && dSocio1.trim().length > 0
+      && dSocio2.trim().length > 0
+      && dSocio3.trim().length > 0) {
       this.mostrarEtapa = false;
       this.mostrarEtapa2 = true;
     } else {
-      alert("Completar todos los campos");
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 1 (*)',
+      });
+      //alert("Completar todos los campos");
     }
   }
 
   //pasar a etapa 3
   public mostrarEtapa3: boolean = false;
-  etapa3() {
-    this.mostrarEtapa2 = false;
-    this.mostrarEtapa3 = true;
+  etapa3(aVision: any,
+    bMision: any,
+    cCreencias: any,
+    dValores: any,
+    ePrincipios: any,
+    fTipoDeLiderazgo: any,
+    gEquipoDirectivo: any,
+    hLogros: any,
+    iProyectos: any,
+    fortalezasDirectivo: any,
+    debilidadesDirectivo: any) {
+    if (aVision.trim().length > 0
+      && bMision.trim().length > 0
+      && cCreencias.trim().length > 0
+      && dValores.trim().length > 0
+      && ePrincipios.trim().length > 0
+      && fTipoDeLiderazgo.trim().length > 0
+      && gEquipoDirectivo.trim().length > 0
+      && hLogros.trim().length > 0
+      && iProyectos.trim().length > 0
+      && fortalezasDirectivo.trim().length > 0
+      && debilidadesDirectivo.trim().length > 0) {
+      this.mostrarEtapa2 = false;
+      this.mostrarEtapa3 = true;
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 2 (*)',
+      });
+    }
+
   }
+
   //pasar a etapa 4
   public mostrarEtapa4: boolean = false;
-  etapa4(bRasgos: any, cCapacitacion: any) {
+  etapa4(bRasgos: any,
+    cCapacitacion: any,
+    dPlanDeVida: any,
+    ePorque: any,
+    fMujeres: any,
+    gHombres: any,
+    fortalezasGeneral: any,
+    debilidadesGeneral: any) {
     if (bRasgos.trim().length > 0
-      && cCapacitacion.trim().length > 0) {
+      && cCapacitacion.trim().length > 0
+      && dPlanDeVida.trim().length > 0
+      && ePorque.trim().length > 0
+      && fMujeres.trim().length > 0
+      && gHombres.trim().length > 0
+      && fortalezasGeneral.trim().length > 0
+      && debilidadesGeneral.trim().length > 0) {
       this.mostrarEtapa3 = false;
       this.mostrarEtapa4 = true;
     } else {
-      alert("Completar todos los campos");
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 3 (*)',
+      });
     }
 
   }
   //pasar a etapa 5
   public mostrarEtapa5: boolean = false;
-  etapa5() {
-    this.mostrarEtapa4 = false;
-    this.mostrarEtapa5 = true;
+  etapa5(aObjetivos: any,
+    bFodaPlanea: any,
+    bFodaOportunidades: any,
+    bFodaAmenazas: any,
+    bFodaEstrategia: any,
+    cControlGestion: any) {
+    if (aObjetivos.trim().length > 0
+      && bFodaPlanea.trim().length > 0
+      && bFodaOportunidades.trim().length > 0
+      && bFodaAmenazas.trim().length > 0
+      && bFodaEstrategia.trim().length > 0
+      && cControlGestion.trim().length > 0) {
+      this.mostrarEtapa4 = false;
+      this.mostrarEtapa5 = true;
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 4 (*)',
+      });
+    }
+
   }
   //pasar a etapa 6
   public mostrarEtapa6: boolean = false;
-  etapa6() {
-    this.mostrarEtapa5 = false;
-    this.mostrarEtapa6 = true;
+  etapa6(bPlantas: any,
+    bTamanio: any,
+    cLineasPro: any,
+    dNumerosEmpleados: any,
+    eCapacidadProductiva: any,
+    hTecnologia: any,
+    iManteyRep: any,
+    jMateriaPrima: any,
+    kHerramientas: any,
+    lSuministroG: any,
+    mFortalezas: any,
+    mDebilidades: any) {
+
+    if (bPlantas.trim().length > 0
+      && bTamanio.trim().length > 0
+      && cLineasPro.trim().length > 0
+      && dNumerosEmpleados.trim().length > 0
+      && eCapacidadProductiva.trim().length > 0
+      && hTecnologia.trim().length > 0
+      && iManteyRep.trim().length > 0
+      && jMateriaPrima.trim().length > 0
+      && kHerramientas.trim().length > 0
+      && lSuministroG.trim().length > 0
+      && mFortalezas.trim().length > 0
+      && mDebilidades.trim().length > 0) {
+
+      this.mostrarEtapa5 = false;
+      this.mostrarEtapa6 = true;
+
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 5 (*)',
+      });
+    }
+
   }
   //pasar a etapa 7
   public mostrarEtapa7: boolean = false;
-  etapa7() {
-    this.mostrarEtapa6 = false;
-    this.mostrarEtapa7 = true;
+  etapa7(bParticipacion: any,
+    cLineasProd: any,
+    dProdProm: any,
+    eRegMar: any,
+    fProm: any,
+    gCadenaDis: any,
+    hEscala: any,
+    iTipoPublic: any,
+    kTipoDeCapac: any,
+    lFortalezas: any,
+    lDebilidades: any) {
+    if (bParticipacion.trim().length > 0
+      && cLineasProd.trim().length > 0
+      && dProdProm.trim().length > 0
+      && eRegMar.trim().length > 0
+      && fProm.trim().length > 0
+      && gCadenaDis.trim().length > 0
+      && hEscala.trim().length > 0
+      && iTipoPublic.trim().length > 0
+      && kTipoDeCapac.trim().length > 0
+      && lFortalezas.trim().length > 0
+      && lDebilidades.trim().length > 0) {
+      this.mostrarEtapa6 = false;
+      this.mostrarEtapa7 = true;
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 6 (*)',
+      });
+    }
+
   }
   //pasar a etapa 8
   public mostrarEtapa8: boolean = false;
-  etapa8() {
-    this.mostrarEtapa7 = false;
-    this.mostrarEtapa8 = true;
+  etapa8(aPatentes: any) {
+    if (aPatentes.trim().length > 0) {
+      this.mostrarEtapa7 = false;
+      this.mostrarEtapa8 = true;
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 7 (*)',
+      });
+    }
+
   }
   //pasar a etapa 9
   public mostrarEtapa9: boolean = false;
-  etapa9() {
-    this.mostrarEtapa8 = false;
-    this.mostrarEtapa9 = true;
+  etapa9(aPrincObj: any,
+    file1: any,
+    cPersonaFina: any,
+    eEndeudamiento: any,
+    gApalancamiento: any) {
+    if (aPrincObj.trim().length > 0
+      && file1.length > 0
+      && cPersonaFina.trim().length > 0
+      && eEndeudamiento.trim().length > 0
+      && gApalancamiento.trim().length > 0
+    ) {
+      this.mostrarEtapa8 = false;
+      this.mostrarEtapa9 = true;
+    }
+    else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 8 (*)',
+      });
+    }
   }
+
   //pasar a etapa 10
   public mostrarEtapa10: boolean = false;
-  etapa10() {
-    this.mostrarEtapa9 = false;
-    this.mostrarEtapa10 = true;
+  etapa10(cVentajaComp: any,
+    dConsiAli: any,
+    eConoPort: any) {
+    if (cVentajaComp.trim().length > 0
+      && dConsiAli.trim().length > 0
+      && eConoPort.trim().length > 0) {
+      this.mostrarEtapa9 = false;
+      this.mostrarEtapa10 = true;
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'No valido',
+        text: 'Completar todos los campos obligatorios de la Etapa 9 (*)',
+      });
+    }
+
   }
 
   //regresar a inicio

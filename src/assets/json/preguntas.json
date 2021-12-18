@@ -72,9 +72,9 @@
     "f": "f) ¿Cuántas mujeres tiene empleadas?*",
     "g": "g) ¿Cuántos hombres tiene empleados?*",
     "h": "h) Si su respuesta en el reactivo (f) fue de un número de mujeres menor entonces conteste la siguiente pregunta ¿ha considerado su organización involucrar más personal femenino?",
-    "textof": "Indique las fortalezas y debilidades de los empleados de su organización*",
-    "fortalezas": "Fortalezas\n(Aciertos que han tenido sus empleados en general)",
-    "debilidades": "Debilidades (deficiencias que han tenido sus empleados en general)"
+    "textof": "Indique las fortalezas y debilidades de los empleados de su organización",
+    "fortalezas": "Fortalezas\n(Aciertos que han tenido sus empleados en general)*",
+    "debilidades": "Debilidades (deficiencias que han tenido sus empleados en general)*"
   },
   "etapa4": {
     "titulo": "Planeación Estratégica y Gestión De Control",

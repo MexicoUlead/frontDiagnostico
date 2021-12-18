@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { diagnostico } from 'src/app/models/diagnostico.model';
 import { ServiceService } from 'src/app/services/service.service';
+import preguntas from 'src/assets/json/preguntas.json';
 
 @Component({
   selector: 'app-estadisticas',
@@ -12,8 +13,11 @@ export class EstadisticasComponent implements OnInit {
   public diagnosticos: diagnostico[] = [];
   public totalDiagnosticos: number = 0;
   public diagnostico: any[] = [];
+  Preguntas: any = preguntas;
+
 
   constructor(private diagnoServ: ServiceService) { }
+
 
   ngOnInit(): void {
 
